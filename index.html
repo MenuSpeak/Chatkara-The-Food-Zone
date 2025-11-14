@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Chatkara The Food Zone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --surface: #0f1114;
+      --muted: #9aa0a6;
+      --gold1: #d4af37;
+      --gold2: #ffcc66;
+      --accent: linear-gradient(90deg, var(--gold1), var(--gold2));
+      --glass: rgba(255, 255, 255, 0.03);
+      --card-radius: 16px;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+      --glass-strong: rgba(255, 255, 255, 0.04);
+      --maxw: 1200px;
+      --gap: 20px;
+      --ff-heading: 'Playfair Display', serif;
+      --ff-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      font-size: 16px;
+    }
+
+    body {
+
+      body {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background image layer */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('bg.png') no-repeat center center/cover;
+  filter: grayscale(100%);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(212, 175, 55, 0.06), transparent 6%),
+                  radial-gradient(1000px 500px at 95% 90%, rgba(255, 204, 102, 0.04), transparent 8%),
+                  var(--bg);
+      color: #e8e6e3;
+      font-family: var(--ff-ui);
+      -webkit-font-smoothing: antialiased;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--maxw);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+    }
+
+    /* Header and Navigation */
+    .header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 10px;
+    }
+
+    .brand {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--gold1), var(--gold2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0b0b0d;
+      font-family: var(--ff-heading);
+      font-size: 20px;
+      font-weight: 700;
+      box-shadow: 0 6px 22px rgba(212, 175, 55, 0.12);
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      margin: 0;
+      font-family: var(--ff-heading);
+      font-size: 20px;
+      letter-spacing: 0.6px;
+    }
+
+    .brand-text p {
+      margin: 2px 0 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .search-container {
+      background: var(--glass);
+      backdrop-filter: blur(6px);
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .search-container input {
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: inherit;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    /* Tabs Navigation */
+    .tabs-container {
+      position: relative;
+      margin-bottom: 10px;
+    }
+
+    .tabs-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 8px 0;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .tabs-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .tab.active {
+      background: var(--accent);
+      color: #0b0b0d;
+      border: none;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
+    }
+
+    /* Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
+      transition: transform 0.28s cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 0.28s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.7);
+    }
+
+    .card-header {
+      display: flex;
+      gap: 12px;
+    }
+
+    .thumb {
+      width: 180px;
+      height: 180px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+
+    .card:hover .thumb img {
+      transform: scale(1.06);
+    }
+
+    .card-info {
+      flex: 1;
+    }
+
+    .dish {
+      font-size: 16px;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      font-family: var(--ff-heading);
+      line-height: 1.3;
+    }
+
+    .desc {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--gold2);
+      flex-shrink: 0;
+    }
+
+    .tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .pill {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      font-size: 11px;
+      color: var(--muted);
+      background: transparent;
+    }
+
+    /* Add to Cart Button - Width Kam Aur Animation */
+    .btn-primary {
+      background: linear-gradient(90deg, var(--gold1), var(--gold2));
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      color: #0b0b0d;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+      font-size: 13px;
+      width: auto;
+      min-width: 100px;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0) scale(0.95);
+    }
+
+    /* Button Animation Effects */
+    .btn-primary.adding {
+      animation: addPulse 0.6s ease;
+    }
+
+    .btn-primary.added {
+      background: linear-gradient(90deg, #10b981, #059669);
+      animation: successPulse 0.8s ease;
+    }
+
+    @keyframes addPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+      }
+      50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+      }
+    }
+
+    @keyframes successPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+      }
+      25% {
+        transform: scale(1.08);
+        box-shadow: 0 8px 30px rgba(16, 185, 129, 0.4);
+      }
+      50% {
+        transform: scale(0.95);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+      }
+      75% {
+        transform: scale(1.03);
+        box-shadow: 0 7px 25px rgba(16, 185, 129, 0.35);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
+      }
+    }
+
+    /* Ripple Effect */
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .btn-primary:active::before {
+      width: 100px;
+      height: 100px;
+    }
+
+    /* Gallery Section */
+    .section-title {
+      font-family: var(--ff-heading);
+      font-size: 22px;
+      margin: 30px 0 16px 0;
+      color: var(--gold2);
+      text-align: center;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      height: 120px;
+      position: relative;
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      margin-top: 30px;
+      padding: 20px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .contact-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
+    }
+
+    .contact-title {
+      font-family: var(--ff-heading);
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: var(--gold2);
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-icon {
+      color: var(--gold2);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .contact-text {
+      flex: 1;
+    }
+
+    .contact-text p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .contact-text a {
+      color: var(--gold2r);
+      text-decoration: none;
+    }
+
+    .contact-text a:hover {
+      text-decoration: underline;
+    }
+
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 200px;
+      margin-top: 15px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      margin-top: 20px;
+    }
+
+    /* Cart Styles */
+    .cart-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .cart-button {
+      background: linear-gradient(90deg, var(--gold1), var(--gold2));
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
+      cursor: pointer;
+      position: relative;
+      border: none;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: #e74c3c;
+      color: white;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .cart-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 11, 13, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      padding: 16px;
+    }
+
+    .cart-modal.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .cart-content {
+      background: var(--surface);
+      width: 100%;
+      max-width: 500px;
+      border-radius: var(--card-radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      padding-bottom: 12px;
+    }
+
+    .cart-title {
+      font-family: var(--ff-heading);
+      font-size: 22px;
+      margin: 0;
+      color: var(--gold2);
+    }
+
+    .close-cart {
+      background: transparent;
+      border: none;
+      color: var(--muted);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .cart-items {
+      margin-bottom: 20px;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .item-info {
+      flex: 1;
+    }
+
+    .item-name {
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      font-size: 15px;
+    }
+
+    .item-price {
+      color: var(--gold2);
+      font-size: 14px;
+    }
+
+    .item-quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quantity-btn {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      color: var(--muted);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .quantity {
+      font-weight: 600;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .remove-item {
+      background: transparent;
+      border: none;
+      color: #e74c3c;
+      cursor: pointer;
+      margin-left: 12px;
+      font-size: 18px;
+    }
+
+    .cart-empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 20px 0;
+    }
+
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .total-amount {
+      color: var(--gold2);
+    }
+
+    .cart-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      border: none;
+      padding: 14px 18px;
+      border-radius: 12px;
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+    }
+
+    .btn-clear {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 12px 14px;
+      border-radius: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* Table Number Input */
+    .table-number-section {
+      margin-bottom: 20px;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .table-number-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--gold2);
+    }
+
+    .table-number-input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 16px;
+    }
+
+    .table-number-input:focus {
+      outline: none;
+      border-color: var(--gold2);
+    }
+
+    /* Print Button */
+    .print-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      padding: 12px 20px;
+      border-radius: 12px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* Gold Line */
+    .gold-line {
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold1), var(--gold2));
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.08);
+      margin: 8px 0 16px 0;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+
+    .site-logo {
+      width: 200px;
+      height: 200px;
+
+      
+      object-fit: contain;
+      margin-left: 10px;
+      border-radius: 8px; /* make corners slightly round */
+    }
+
+    /* Tablet and Desktop Styles */
+    @media (min-width: 768px) {
+      body {
+        padding: 24px;
+      }
+      
+      .container {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: 24px;
+        align-items: start;
+      }
+      
+      .header {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .brand {
+        flex: 1;
+      }
+      
+      .search-container {
+        width: auto;
+        min-width: 300px;
+      }
+      
+      .tabs-container {
+        grid-column: 1 / -1;
+      }
+      
+      .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .cart-actions {
+        flex-direction: row;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .menu-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      
+      .cart-container,
+      .cart-modal,
+      .btn-ghost {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <main class="menu">
+      <div class="menu-head">
+        <div>
+          <h2 class="title">
+            Chatkara The Food Zone
+          <img src="logo.jpg" alt="Logo" class="site-logo">
+          </h2>
+
+          <div class="subtitle"> • Veg — Non Veg</div>
+          <div class="gold-line"></div>
+        </div>
+
+        <div class="controls">
+          <div class="search" role="search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <path d="M21 21l-4.35-4.35" stroke="rgba(255,255,255,0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path>
+              <circle cx="11" cy="11" r="6" stroke="rgba(255,255,255,0.6)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></circle>
+            </svg>
+            <input id="search" placeholder="Search dishes, ingredients..." />
+          </div>
+
+          <div class="tabs" role="tablist">
+<button class="tab active" data-cat="all">All</button>
+<button class="tab" data-cat="बर्गर (Burger)">Burger</button>
+<button class="tab" data-cat="वड़ापाव (Vadapav)">Vadapav</button>
+<button class="tab" data-cat="पिज़्ज़ा (Pizza)">Pizza</button>
+<button class="tab" data-cat="फ्रैंकी रोल्स (Frankie Rolls)">Frankie Rolls</button>
+<button class="tab" data-cat="मैगी (Maggi)">Maggi</button>
+<button class="tab" data-cat="चाट कॉर्नर (Chat Corner)">Chat Corner</button>
+<button class="tab" data-cat="पाव भाजी (Pav Bhaji)">Pav Bhaji</button>
+<button class="tab" data-cat="फ्रेंच फ्राई (French Fries)">French Fries</button>
+<button class="tab" data-cat="सैंडविच (Sandwich)">Sandwich</button>
+<button class="tab" data-cat="मोमोज (Momos)">Momos</button>
+<button class="tab" data-cat="चाइनीज कॉर्नर (Chinese Corner)">Chinese Corner</button>
+<button class="tab" data-cat="सूप (Soup)">Soup</button>
+<button class="tab" data-cat="ब्रेड स्पेशल (Bread Special)">Bread Special</button>
+<button class="tab" data-cat="नाश्ता (Breakfast)">Breakfast</button>
+<button class="tab" data-cat="पाव स्पेशल (Pav Special)">Pav Special</button>
+<button class="tab" data-cat="अन्य आइटम्स (Other Items)">Other Items</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="menu-grid" id="menuGrid">
+        <!-- Cards injected by JS -->
+      </section>
+
+      <div style="display:flex;justify-content:flex-end;margin-top:6px">
+        <!-- <button class="btn-ghost" onclick="window.print()">Print Menu</button> -->
+      </div>
+    </main>
+  </div>
+
+  <!-- Cart Button -->
+  <div class="cart-container">
+    <button class="cart-button" id="cartButton">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <path d="M16 10a4 4 0 0 1-8 0"></path>
+      </svg>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+
+  <!-- Cart Modal -->
+  <div class="cart-modal" id="cartModal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3 class="cart-title">Your Order</h3>
+        <button class="close-cart" id="closeCart">&times;</button>
+      </div>
+      
+      <!-- Table Number Input Section -->
+      <div class="table-number-section">
+        <label for="tableNumber" class="table-number-label">Enter Table Number</label>
+        <input type="text" id="tableNumber" class="table-number-input" placeholder="e.g., Table 5" />
+      </div>
+      
+      <div class="cart-items" id="cartItems">
+        <!-- Cart items will be inserted here -->
+        <div class="cart-empty" id="cartEmpty">Your cart is empty</div>
+      </div>
+      
+      <div class="cart-total">
+        <span>Total:</span>
+        <span class="total-amount" id="cartTotal">₹0</span>
+      </div>
+      
+      <div class="cart-actions">
+        <button class="btn-clear" id="clearCart">Clear Cart</button>
+        <button class="btn-whatsapp" id="whatsappOrder">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.864 3.488"/>
+          </svg>
+          Order via WhatsApp
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const data = [
+{"id":1,"cat":"बर्गर (Burger)","name":"आलू टिक्की बर्गर / Aloo Tikki Burger","price":"₹70","desc":"Crispy potato patty burger with fresh vegetables and sauces.","tags":["Vegetarian","Burger","Snack"],"img":"img/aloo-tikki-burger.jpeg"},
+{"id":2,"cat":"बर्गर (Burger)","name":"वेज चीज बर्गर / Veg Cheese Burger","price":"₹100","desc":"Vegetable patty with melted cheese and fresh toppings.","tags":["Vegetarian","Burger","Cheese"],"img":"img/veg-cheese-burger.jpeg"},
+{"id":3,"cat":"बर्गर (Burger)","name":"वेज क्रिम बर्गर / Veg Cream Burger","price":"₹60","desc":"Creamy vegetable burger with special sauces.","tags":["Vegetarian","Burger","Cream"],"img":"img/veg-cream-burger.jpeg"},
+{"id":4,"cat":"बर्गर (Burger)","name":"शेज्वान क्रिम बर्गर / Schezwan Cream Burger","price":"₹50","desc":"Spicy Schezwan flavored cream burger with vegetables.","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-cream-burger.jpeg"},
+{"id":5,"cat":"बर्गर (Burger)","name":"वेज बर्गर / Veg Burger","price":"₹50","desc":"Classic vegetable burger with fresh fillings.","tags":["Vegetarian","Burger","Basic"],"img":"img/veg-burger.jpeg"},
+{"id":6,"cat":"बर्गर (Burger)","name":"शेज़वान वेज बर्गर / Schezwan Veg Burger","price":"₹50","desc":"Spicy Schezwan style vegetable burger.","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-veg-burger.jpeg"},
+{"id":7,"cat":"बर्गर (Burger)","name":"बर्गर पिज़्ज़ा / Burger Pizza","price":"₹150","desc":"Unique combination of burger and pizza flavors.","tags":["Vegetarian","Burger","Pizza"],"img":"img/burger-pizza.jpeg"},
+{"id":8,"cat":"बर्गर (Burger)","name":"शेज़वान स्पाईसी बर्गर / Schezwan Spicy Burger","price":"₹90","desc":"Extra spicy Schezwan flavored burger.","tags":["Vegetarian","Burger","Schezwan","Spicy"],"img":"img/schezwan-spicy-burger.jpeg"},
+{"id":9,"cat":"बर्गर (Burger)","name":"शेज़वान टिक्की बर्गर / Schezwan Tikki Burger","price":"₹70","desc":"Schezwan flavored potato tikki burger.","tags":["Vegetarian","Burger","Schezwan","Tikki"],"img":"img/schezwan-tikki-burger.jpeg"},
+{"id":10,"cat":"बर्गर (Burger)","name":"मेयोनिज चीज बर्गर / Mayonnaise Cheese Burger","price":"₹140","desc":"Cheese burger with creamy mayonnaise dressing.","tags":["Vegetarian","Burger","Cheese","Mayonnaise"],"img":"img/mayonnaise-cheese-burger.jpeg"},
+{"id":11,"cat":"बर्गर (Burger)","name":"डबल टिक्की बर्गर / Double Tikki Burger","price":"₹180","desc":"Double potato patty burger with extra fillings.","tags":["Vegetarian","Burger","Double"],"img":"img/double-tikki-burger.jpeg"},
+{"id":12,"cat":"बर्गर (Burger)","name":"पनीर चीज बर्गर / Paneer Cheese Burger","price":"₹190","desc":"Paneer and cheese stuffed burger with fresh vegetables.","tags":["Vegetarian","Burger","Paneer","Cheese"],"img":"img/paneer-cheese-burger.jpeg"},
+{"id":13,"cat":"बर्गर (Burger)","name":"तंदूरी स्मोकी बर्गर / Tandoori Smoky Burger","price":"₹200","desc":"Smoky tandoori flavored vegetable burger.","tags":["Vegetarian","Burger","Tandoori","Smoky"],"img":"img/tandoori-smoky-burger.jpeg"},
+{"id":14,"cat":"बर्गर (Burger)","name":"चटकारा स्पेशल बर्गर / Chatkara Special Burger","price":"₹250","desc":"Special house signature burger with unique flavors.","tags":["Vegetarian","Burger","Special"],"img":"img/chatkara-special-burger.jpeg"},
+{"id":15,"cat":"बर्गर (Burger)","name":"डबल चीज बर्गर / Double Cheese Burger","price":"₹130","desc":"Double cheese loaded vegetable burger.","tags":["Vegetarian","Burger","Cheese","Double"],"img":"img/double-cheese-burger.jpeg"},
+
+{"id":16,"cat":"वड़ापाव (Vadapav)","name":"पनीर वड़ापाव / Paneer Vadapav","price":"₹65","desc":"Soft bun with spicy paneer filling and chutneys.","tags":["Vegetarian","Snack","Maharashtrian"],"img":"img/paneer-vadapav.jpeg"},
+{"id":17,"cat":"वड़ापाव (Vadapav)","name":"क्रिम वड़ापाव / Cream Vadapav","price":"₹50","desc":"Creamy and soft vadapav with special fillings.","tags":["Vegetarian","Snack","Cream"],"img":"img/cream-vadapav.jpeg"},
+{"id":18,"cat":"वड़ापाव (Vadapav)","name":"चीज वड़ापाव / Cheese Vadapav","price":"₹65","desc":"Cheesy potato patty in soft bun with chutneys.","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-vadapav.jpeg"},
+{"id":19,"cat":"वड़ापाव (Vadapav)","name":"शेज़वान क्रिम वड़ापाव / Schezwan Cream Vadapav","price":"₹55","desc":"Spicy Schezwan cream filled vadapav.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-cream-vadapav.jpeg"},
+{"id":20,"cat":"वड़ापाव (Vadapav)","name":"वड़ापाव / Vadapav","price":"₹50","desc":"Classic Mumbai style potato patty in bun.","tags":["Vegetarian","Snack","Classic"],"img":"img/vadapav.jpeg"},
+{"id":21,"cat":"वड़ापाव (Vadapav)","name":"शेज़वान वड़ापाव / Schezwan Vadapav","price":"₹50","desc":"Spicy Schezwan flavored potato vadapav.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-vadapav.jpeg"},
+{"id":22,"cat":"वड़ापाव (Vadapav)","name":"चटकारा स्पेशल वड़ापाव / Chatkara Special Vadapav","price":"₹100","desc":"Special house recipe vadapav with unique flavors.","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-vadapav.jpeg"},
+
+{"id":23,"cat":"पिज़्ज़ा (Pizza)","name":"ओनली चीज़ पिज़्ज़ा / Only Cheese Pizza","price":"₹250","desc":"Cheese loaded pizza with delicious toppings.","tags":["Vegetarian","Pizza","Cheese"],"img":"img/only-cheese-pizza.jpeg"},
+{"id":24,"cat":"पिज़्ज़ा (Pizza)","name":"पनीर चीज़ पिज़्ज़ा / Paneer Cheese Pizza","price":"₹260","desc":"Paneer and cheese combination pizza.","tags":["Vegetarian","Pizza","Paneer"],"img":"img/paneer-cheese-pizza.jpeg"},
+{"id":25,"cat":"पिज़्ज़ा (Pizza)","name":"वेज पिज़्ज़ा / Veg Pizza","price":"₹200","desc":"Classic vegetable pizza with mixed toppings.","tags":["Vegetarian","Pizza","Vegetable"],"img":"img/veg-pizza.jpeg"},
+{"id":26,"cat":"पिज़्ज़ा (Pizza)","name":"ऑनियन कैप्सिकम पिज़्ज़ा / Onion Capsicum Pizza","price":"₹200","desc":"Onion and capsicum topped pizza.","tags":["Vegetarian","Pizza","Onion","Capsicum"],"img":"img/onion-capsicum-pizza.jpeg"},
+{"id":27,"cat":"पिज़्ज़ा (Pizza)","name":"चीज़ कॉर्न पिज़्ज़ा / Cheese Corn Pizza","price":"₹270","desc":"Sweet corn and cheese loaded pizza.","tags":["Vegetarian","Pizza","Corn","Cheese"],"img":"img/cheese-corn-pizza.jpeg"},
+{"id":28,"cat":"पिज़्ज़ा (Pizza)","name":"तंदूरी स्मोकी पिज़्ज़ा / Tandoori Smoky Pizza","price":"₹250","desc":"Smoky tandoori flavored vegetable pizza.","tags":["Vegetarian","Pizza","Tandoori"],"img":"img/tandoori-smoky-pizza.jpeg"},
+{"id":29,"cat":"पिज़्ज़ा (Pizza)","name":"ऑलिव पनीर चीज़ पिज़्ज़ा / Olive Paneer Cheese Pizza","price":"₹250","desc":"Olive, paneer and cheese combination pizza.","tags":["Vegetarian","Pizza","Olive","Paneer"],"img":"img/olive-paneer-cheese-pizza.jpeg"},
+{"id":30,"cat":"पिज़्ज़ा (Pizza)","name":"तंदूरी पनीर पिज़्ज़ा / Tandoori Paneer Pizza","price":"₹300","desc":"Tandoori marinated paneer pizza.","tags":["Vegetarian","Pizza","Paneer","Tandoori"],"img":"img/tandoori-paneer-pizza.jpeg"},
+{"id":31,"cat":"पिज़्ज़ा (Pizza)","name":"शेज़वान स्पाइसी पिज़्ज़ा / Schezwan Spicy Pizza","price":"₹250","desc":"Spicy Schezwan flavored pizza.","tags":["Vegetarian","Pizza","Schezwan","Spicy"],"img":"img/schezwan-spicy-pizza.jpeg"},
+{"id":32,"cat":"पिज़्ज़ा (Pizza)","name":"चटकारा स्पेशल पिज़्ज़ा / Chatkara Special Pizza","price":"₹250","desc":"Special house recipe pizza with unique toppings.","tags":["Vegetarian","Pizza","Special"],"img":"img/chatkara-special-pizza.jpeg"},
+
+{"id":33,"cat":"फ्रैंकी रोल्स (Frankie Rolls)","name":"वेज चीज़ फ्रैंकी / Veg Cheese Frankie","price":"₹70","desc":"Vegetable and cheese stuffed frankie roll.","tags":["Vegetarian","Frankie","Cheese"],"img":"img/veg-cheese-frankie.jpeg"},
+{"id":34,"cat":"फ्रैंकी रोल्स (Frankie Rolls)","name":"वेज फ्रैंकी / Veg Frankie","price":"₹50","desc":"Classic vegetable frankie roll with sauces.","tags":["Vegetarian","Frankie","Basic"],"img":"img/veg-frankie.jpeg"},
+{"id":35,"cat":"फ्रैंकी रोल्स (Frankie Rolls)","name":"चटकारा स्पेशल फ्रैंकी / Chatkara Special Frankie","price":"₹110","desc":"Special house recipe frankie with unique fillings.","tags":["Vegetarian","Frankie","Special"],"img":"img/chatkara-special-frankie.jpeg"},
+
+{"id":36,"cat":"मैगी (Maggi)","name":"वेजीटेबल मैगी / Vegetable Maggi","price":"₹70","desc":"Maggi noodles with fresh vegetables.","tags":["Vegetarian","Maggi","Noodles"],"img":"img/vegetable-maggi.jpeg"},
+{"id":37,"cat":"मैगी (Maggi)","name":"वेजीटेबल क्रिम मैगी / Vegetable Cream Maggi","price":"₹80","desc":"Creamy vegetable maggi with rich texture.","tags":["Vegetarian","Maggi","Cream"],"img":"img/vegetable-cream-maggi.jpeg"},
+{"id":38,"cat":"मैगी (Maggi)","name":"शेजवान स्पाईसी मैगी / Schezwan Spicy Maggi","price":"₹90","desc":"Spicy Schezwan flavored maggi noodles.","tags":["Vegetarian","Maggi","Schezwan"],"img":"img/schezwan-spicy-maggi.jpeg"},
+{"id":39,"cat":"मैगी (Maggi)","name":"प्लेन मैगी / Plain Maggi","price":"₹50","desc":"Classic plain maggi noodles.","tags":["Vegetarian","Maggi","Basic"],"img":"img/plain-maggi.jpeg"},
+{"id":40,"cat":"मैगी (Maggi)","name":"एकस्ट्रा मसाला मैगी / Extra Masala Maggi","price":"₹60","desc":"Maggi with extra spices and masala.","tags":["Vegetarian","Maggi","Spicy"],"img":"img/extra-masala-maggi.jpeg"},
+{"id":41,"cat":"मैगी (Maggi)","name":"क्रिम मैगी / Cream Maggi","price":"₹65","desc":"Creamy and rich maggi noodles.","tags":["Vegetarian","Maggi","Cream"],"img":"img/cream-maggi.jpeg"},
+{"id":42,"cat":"मैगी (Maggi)","name":"चीज कोर्न मैगी / Cheese Corn Maggi","price":"₹90","desc":"Cheese and corn loaded maggi noodles.","tags":["Vegetarian","Maggi","Cheese","Corn"],"img":"img/cheese-corn-maggi.jpeg"},
+{"id":43,"cat":"मैगी (Maggi)","name":"चटकारा स्पेशल मैगी / Chatkara Special Maggi","price":"₹120","desc":"Special house recipe maggi with unique flavors.","tags":["Vegetarian","Maggi","Special"],"img":"img/chatkara-special-maggi.jpeg"},
+
+{"id":44,"cat":"चाट कॉर्नर (Chat Corner)","name":"आलू टिक्की चाट (half) / Aloo Tikki Chaat (Half)","price":"₹50","desc":"Half portion of spicy potato tikki chaat.","tags":["Vegetarian","Chaat","Snack"],"img":"img/aloo-tikki-chaat-half.jpeg"},
+{"id":45,"cat":"चाट कॉर्नर (Chat Corner)","name":"आलू टिक्की चाट (full) / Aloo Tikki Chaat (Full)","price":"₹80","desc":"Full portion of delicious potato tikki chaat.","tags":["Vegetarian","Chaat","Snack"],"img":"img/aloo-tikki-chaat-full.jpeg"},
+{"id":46,"cat":"चाट कॉर्नर (Chat Corner)","name":"भेल मुड़ी / Bhel Muri","price":"₹50","desc":"Classic Mumbai style bhel puri with chutneys.","tags":["Vegetarian","Chaat","Mumbai"],"img":"img/bhel-muri.jpeg"},
+{"id":47,"cat":"चाट कॉर्नर (Chat Corner)","name":"चटपटी चना दाल / Chatpati Chana Dal","price":"₹50","desc":"Spicy and tangy chana dal chaat.","tags":["Vegetarian","Chaat","Healthy"],"img":"img/chatpati-chana-dal.jpeg"},
+{"id":48,"cat":"चाट कॉर्नर (Chat Corner)","name":"दाबेली / Dabeli","price":"₹50","desc":"Gujarati style dabeli with sweet and spicy flavors.","tags":["Vegetarian","Chaat","Gujarati"],"img":"img/dabeli.jpeg"},
+{"id":49,"cat":"चाट कॉर्नर (Chat Corner)","name":"ब्रेड़ पकोड़ा / Bread Pakoda","price":"₹60","desc":"Crispy bread pakoda with potato filling.","tags":["Vegetarian","Snack","Fried"],"img":"img/bread-pakoda.jpeg"},
+
+{"id":50,"cat":"पाव भाजी (Pav Bhaji)","name":"बटर पाव भाजी / Butter Pav Bhaji","price":"₹190","desc":"Butter loaded pav bhaji with soft buns.","tags":["Vegetarian","Main Course","Maharashtrian"],"img":"img/butter-pav-bhaji.jpeg"},
+{"id":51,"cat":"पाव भाजी (Pav Bhaji)","name":"पाव भाजी (Half) / Pav Bhaji (Half)","price":"₹60","desc":"Half portion of classic pav bhaji.","tags":["Vegetarian","Main Course","Half"],"img":"img/pav-bhaji-half.jpeg"},
+{"id":52,"cat":"पाव भाजी (Pav Bhaji)","name":"पाव भाजी (Full) / Pav Bhaji (Full)","price":"₹100","desc":"Full portion of delicious mixed vegetable bhaji.","tags":["Vegetarian","Main Course","Full"],"img":"img/pav-bhaji-full.jpeg"},
+{"id":53,"cat":"पाव भाजी (Pav Bhaji)","name":"पनीर बटर पाव भाजी / Paneer Butter Pav Bhaji","price":"₹200","desc":"Paneer added butter pav bhaji.","tags":["Vegetarian","Main Course","Paneer"],"img":"img/paneer-butter-pav-bhaji.jpeg"},
+
+{"id":54,"cat":"फ्रेंच फ्राई (French Fries)","name":"चीज फ्रेंच फ्राई / Cheese French Fries","price":"₹99","desc":"Cheese topped crispy french fries.","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-french-fries.jpeg"},
+{"id":55,"cat":"फ्रेंच फ्राई (French Fries)","name":"शेज़वान फ्रेंच फ्राई / Schezwan French Fries","price":"₹120","desc":"Spicy Schezwan flavored french fries.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-french-fries.jpeg"},
+{"id":56,"cat":"फ्रेंच फ्राई (French Fries)","name":"मैगी मसाला फ्रेंच फ्राई / Maggi Masala French Fries","price":"₹80","desc":"French fries with maggi masala seasoning.","tags":["Vegetarian","Snack","Maggi"],"img":"img/maggi-masala-french-fries.jpeg"},
+{"id":57,"cat":"फ्रेंच फ्राई (French Fries)","name":"मसाला फ्रेंच फ्राई / Masala French Fries","price":"₹90","desc":"Spicy masala seasoned french fries.","tags":["Vegetarian","Snack","Spicy"],"img":"img/masala-french-fries.jpeg"},
+{"id":58,"cat":"फ्रेंच फ्राई (French Fries)","name":"चाट मसाला फ्रेंच फ्राई / Chaat Masala French Fries","price":"₹169","desc":"Tangy chaat masala flavored french fries.","tags":["Vegetarian","Snack","Chaat"],"img":"img/chaat-masala-french-fries.jpeg"},
+{"id":59,"cat":"फ्रेंच फ्राई (French Fries)","name":"चटकारा स्पेशल फ्रेंच फ्राई / Chatkara Special French Fries","price":"₹99","desc":"Special house recipe french fries.","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-french-fries.jpeg"},
+
+{"id":60,"cat":"सैंडविच (Sandwich)","name":"चीज सेण्डविच / Cheese Sandwich","price":"₹59","desc":"Grilled cheese sandwich with fresh vegetables.","tags":["Vegetarian","Sandwich","Cheese"],"img":"img/cheese-sandwich.jpeg"},
+{"id":61,"cat":"सैंडविच (Sandwich)","name":"तंदुरी पनीर सेण्डविच / Tandoori Paneer Sandwich","price":"₹60","desc":"Tandoori marinated paneer sandwich.","tags":["Vegetarian","Sandwich","Paneer","Tandoori"],"img":"img/tandoori-paneer-sandwich.jpeg"},
+{"id":62,"cat":"सैंडविच (Sandwich)","name":"वेज सेण्ड‌विच / Veg Sandwich","price":"₹50","desc":"Classic vegetable sandwich.","tags":["Vegetarian","Sandwich","Basic"],"img":"img/veg-sandwich.jpeg"},
+{"id":63,"cat":"सैंडविच (Sandwich)","name":"क्रिम सेण्डविच / Cream Sandwich","price":"₹59","desc":"Creamy vegetable sandwich.","tags":["Vegetarian","Sandwich","Cream"],"img":"img/cream-sandwich.jpeg"},
+{"id":64,"cat":"सैंडविच (Sandwich)","name":"चटकारा स्पेशल सेण्डविच / Chatkara Special Sandwich","price":"₹110","desc":"Special house recipe sandwich.","tags":["Vegetarian","Sandwich","Special"],"img":"img/chatkara-special-sandwich.jpeg"},
+
+{"id":65,"cat":"मोमोज (Momos)","name":"पनीर मोमोज / Paneer Momos","price":"₹100","desc":"Steamed paneer stuffed momos.","tags":["Vegetarian","Momos","Steamed"],"img":"img/paneer-momos.jpeg"},
+{"id":66,"cat":"मोमोज (Momos)","name":"क्रीम फ्राई मोमोज / Cream Fry Momos","price":"₹80","desc":"Creamy fried momos with special fillings.","tags":["Vegetarian","Momos","Fried"],"img":"img/cream-fry-momos.jpeg"},
+{"id":67,"cat":"मोमोज (Momos)","name":"फ्राई मोमोज / Fry Momos","price":"₹70","desc":"Crispy fried vegetable momos.","tags":["Vegetarian","Momos","Fried"],"img":"img/fry-momos.jpeg"},
+{"id":68,"cat":"मोमोज (Momos)","name":"चीज़ कार्न मोमोज / Cheese Corn Momos","price":"₹100","desc":"Cheese and corn stuffed momos.","tags":["Vegetarian","Momos","Cheese","Corn"],"img":"img/cheese-corn-momos.jpeg"},
+
+{"id":69,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"स्प्रिंग रोल / Spring Roll","price":"₹80","desc":"Crispy vegetable spring rolls.","tags":["Vegetarian","Chinese","Starter"],"img":"img/spring-roll.jpeg"},
+{"id":70,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"चाऊमीन / Chowmein","price":"₹60","desc":"Classic vegetable chowmein noodles.","tags":["Vegetarian","Chinese","Noodles"],"img":"img/chowmein.jpeg"},
+{"id":71,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"मंचूरियन / Manchurian","price":"₹60","desc":"Vegetable manchurian in spicy sauce.","tags":["Vegetarian","Chinese","Manchurian"],"img":"img/manchurian.jpeg"},
+{"id":72,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"हनी चिल्ली पोटेटो / Honey Chilli Potato","price":"₹90","desc":"Crispy potato in honey chilli sauce.","tags":["Vegetarian","Chinese","Sweet","Spicy"],"img":"img/honey-chilli-potato.jpeg"},
+
+{"id":73,"cat":"सूप (Soup)","name":"स्वीट कॉर्न सूप / Sweet Corn Soup","price":"₹50","desc":"Hot and sweet corn vegetable soup.","tags":["Vegetarian","Soup","Corn"],"img":"img/sweet-corn-soup.jpeg"},
+{"id":74,"cat":"सूप (Soup)","name":"मनचाऊ सूप / Manchow Soup","price":"₹60","desc":"Spicy Manchow soup with vegetables.","tags":["Vegetarian","Soup","Spicy"],"img":"img/manchow-soup.jpeg"},
+{"id":75,"cat":"सूप (Soup)","name":"टोमैटो सूप / Tomato Soup","price":"₹49","desc":"Classic hot tomato soup.","tags":["Vegetarian","Soup","Tomato"],"img":"img/tomato-soup.jpeg"},
+{"id":76,"cat":"सूप (Soup)","name":"हॉट & सौर सूप / Hot & Sour Soup","price":"₹60","desc":"Chinese style hot and sour soup.","tags":["Vegetarian","Soup","Chinese"],"img":"img/hot-sour-soup.jpeg"},
+
+{"id":77,"cat":"ब्रेड स्पेशल (Bread Special)","name":"ब्रेड बटर / Bread Butter","price":"₹59","desc":"Fresh bread with butter.","tags":["Vegetarian","Breakfast","Basic"],"img":"img/bread-butter.jpeg"},
+{"id":78,"cat":"ब्रेड स्पेशल (Bread Special)","name":"ब्रेड जेम / Bread Jam","price":"₹60","desc":"Bread with fruit jam.","tags":["Vegetarian","Breakfast","Sweet"],"img":"img/bread-jam.jpeg"},
+{"id":79,"cat":"ब्रेड स्पेशल (Bread Special)","name":"गार्लिक ब्रेड / Garlic Bread","price":"₹50","desc":"Toasted garlic flavored bread.","tags":["Vegetarian","Snack","Garlic"],"img":"img/garlic-bread.jpeg"},
+{"id":80,"cat":"ब्रेड स्पेशल (Bread Special)","name":"चीज़ गार्लिक ब्रेड / Cheese Garlic Bread","price":"₹59","desc":"Cheese topped garlic bread.","tags":["Vegetarian","Snack","Cheese","Garlic"],"img":"img/cheese-garlic-bread.jpeg"},
+
+{"id":81,"cat":"नाश्ता (Breakfast)","name":"पोहा / Poha","price":"₹90","desc":"Flattened rice with spices and peanuts.","tags":["Vegetarian","Breakfast","Maharashtrian"],"img":"img/poha.jpeg"},
+{"id":82,"cat":"नाश्ता (Breakfast)","name":"उपमा / Upma","price":"₹99","desc":"Semolina cooked with vegetables and spices.","tags":["Vegetarian","Breakfast","South Indian"],"img":"img/upma.jpeg"},
+
+{"id":83,"cat":"पाव स्पेशल (Pav Special)","name":"चीज आलू टिक्की पाव / Cheese Aloo Tikki Pav","price":"₹80","desc":"Cheese and potato tikki stuffed pav.","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-aloo-tikki-pav.jpeg"},
+{"id":84,"cat":"पाव स्पेशल (Pav Special)","name":"आलू टिक्की पाव / Aloo Tikki Pav","price":"₹70","desc":"Potato tikki stuffed pav.","tags":["Vegetarian","Snack","Basic"],"img":"img/aloo-tikki-pav.jpeg"},
+{"id":85,"cat":"पाव स्पेशल (Pav Special)","name":"वेज क्रिम पाव / Veg Cream Pav","price":"₹69","desc":"Creamy vegetable stuffed pav.","tags":["Vegetarian","Snack","Cream"],"img":"img/veg-cream-pav.jpeg"},
+{"id":86,"cat":"पाव स्पेशल (Pav Special)","name":"वेज पाव / Veg Pav","price":"₹150","desc":"Vegetable stuffed pav.","tags":["Vegetarian","Snack","Vegetable"],"img":"img/veg-pav.jpeg"},
+{"id":87,"cat":"पाव स्पेशल (Pav Special)","name":"वेज चीज पाव / Veg Cheese Pav","price":"₹99","desc":"Vegetable and cheese stuffed pav.","tags":["Vegetarian","Snack","Cheese"],"img":"img/veg-cheese-pav.jpeg"},
+{"id":88,"cat":"पाव स्पेशल (Pav Special)","name":"शेज्वान स्पाईसी पाव / Schezwan Spicy Pav","price":"₹120","desc":"Spicy Schezwan flavored pav.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-spicy-pav.jpeg"},
+{"id":89,"cat":"पाव स्पेशल (Pav Special)","name":"चटकारा स्पेशल पाव / Chatkara Special Pav","price":"₹80","desc":"Special house recipe stuffed pav.","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-pav.jpeg"},
+
+{"id":90,"cat":"अन्य आइटम्स (Other Items)","name":"ब्रेड (छोटी व बड़ी) / Bread (Small & Big)","price":"₹70","desc":"Fresh bread in different sizes.","tags":["Vegetarian","Basic","Bakery"],"img":"img/bread.jpeg"},
+{"id":91,"cat":"अन्य आइटम्स (Other Items)","name":"अलग अलग फ्लेवर की केक / Different Flavor Cakes","price":"₹69","desc":"Assorted flavor cakes available.","tags":["Vegetarian","Dessert","Cake"],"img":"img/cakes.jpeg"},
+{"id":92,"cat":"अन्य आइटम्स (Other Items)","name":"अलग अलग फ्लेवर की आइसक्रीम / Different Flavor Ice Cream","price":"₹150","desc":"Various flavor ice creams.","tags":["Vegetarian","Dessert","Ice Cream"],"img":"img/ice-cream.jpeg"}
+];
+
+    // Cart functionality
+    let cart = [];
+    const cartButton = document.getElementById('cartButton');
+    const cartModal = document.getElementById('cartModal');
+    const closeCart = document.getElementById('closeCart');
+    const cartItems = document.getElementById('cartItems');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const cartCount = document.getElementById('cartCount');
+    const cartTotal = document.getElementById('cartTotal');
+    const clearCart = document.getElementById('clearCart');
+    const whatsappOrder = document.getElementById('whatsappOrder');
+    const tableNumberInput = document.getElementById('tableNumber');
+
+    // Toggle cart modal
+    cartButton.addEventListener('click', () => {
+      cartModal.classList.add('open');
+    });
+
+    closeCart.addEventListener('click', () => {
+      cartModal.classList.remove('open');
+    });
+
+    // Add to cart function with animation
+    function addToCart(item, button) {
+      const existingItem = cart.find(cartItem => cartItem.id === item.id);
+      
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: 1
+        });
+      }
+      
+      updateCart();
+      
+      // Animation effect
+      button.classList.add('adding');
+      button.innerHTML = 'Adding...';
+      
+      setTimeout(() => {
+        button.classList.remove('adding');
+        button.classList.add('added');
+        button.innerHTML = '✓ Added';
+        
+        setTimeout(() => {
+          button.classList.remove('added');
+          button.innerHTML = 'Add to Cart';
+        }, 1000);
+      }, 500);
+    }
+
+    // Remove from cart function
+    function removeFromCart(itemId) {
+      cart = cart.filter(item => item.id !== itemId);
+      updateCart();
+    }
+
+    // Update quantity function
+    function updateQuantity(itemId, change) {
+      const item = cart.find(item => item.id === itemId);
+      
+      if (item) {
+        item.quantity += change;
+        
+        if (item.quantity <= 0) {
+          removeFromCart(itemId);
+        } else {
+          updateCart();
+        }
+      }
+    }
+
+    // Update cart display
+    function updateCart() {
+      // Update cart count
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+      
+      // Update cart items
+      if (cart.length === 0) {
+        cartEmpty.style.display = 'block';
+        cartItems.innerHTML = '';
+      } else {
+        cartEmpty.style.display = 'none';
+        
+        let itemsHTML = '';
+        let totalAmount = 0;
+        
+        cart.forEach(item => {
+          const price = parseInt(item.price.replace('₹', ''));
+          const itemTotal = price * item.quantity;
+          totalAmount += itemTotal;
+          
+          itemsHTML += `
+            <div class="cart-item">
+              <div class="item-info">
+                <div class="item-name">${item.name}</div>
+                <div class="item-price">${item.price}</div>
+              </div>
+              <div class="item-quantity">
+                <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                <span class="quantity">${item.quantity}</span>
+                <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                <button class="remove-item" onclick="removeFromCart(${item.id})">×</button>
+              </div>
+            </div>
+          `;
+        });
+        
+        cartItems.innerHTML = itemsHTML;
+        cartTotal.textContent = `₹${totalAmount}`;
+      }
+    }
+
+    // Clear cart
+    clearCart.addEventListener('click', () => {
+      cart = [];
+      updateCart();
+    });
+
+    // WhatsApp order function
+    whatsappOrder.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+      }
+      
+      const tableNumber = tableNumberInput.value.trim();
+      if (!tableNumber) {
+        alert('Please enter your table number');
+        return;
+      }
+      
+      let message = `Hello! I would like to place an order from Table: ${tableNumber}:\n\n`;
+      
+      cart.forEach(item => {
+        message += `${item.name} - ${item.quantity} x ${item.price}\n`;
+      });
+      
+      const totalAmount = cart.reduce((sum, item) => {
+        const price = parseInt(item.price.replace('₹', ''));
+        return sum + (price * item.quantity);
+      }, 0);
+      
+      message += `\nTotal: ₹${totalAmount}\n\nThank you!`;
+      
+      // Encode the message for WhatsApp URL
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappURL = `https://wa.me/919370744590?text=${encodedMessage}`;
+      
+      // Open WhatsApp in a new tab
+      window.open(whatsappURL, '_blank');
+    });
+
+    // Render menu items
+    function renderMenuItems(items) {
+      const menuGrid = document.getElementById('menuGrid');
+      
+      if (items.length === 0) {
+        menuGrid.innerHTML = '<p style="text-align:center;color:var(--muted);grid-column:1/-1;padding:40px 20px">No items found</p>';
+        return;
+      }
+      
+      menuGrid.innerHTML = items.map(item => `
+        <div class="card" data-cat="${item.cat}">
+          <div class="card-header">
+            <div class="thumb">
+              <img src="${item.img}" alt="${item.name}" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMDMpIi8+CjxwYXRoIGQ9Ik03MCA4MEgxMTBNODAgNzBWOTBNNjUgOTVIMTA1TTk1IDY1VjEwNU02NSA2NVYxMDVNNzUgNzVIOThNNzUgODVIOThNNzUgOTVIOThNNzUgMTA1SDk4TTY1IDc1SDcyTTY1IDg1SDcyTTY1IDk1SDcyTTY1IDEwNUg3Mk0xMDggNzVIMTE1TTEwOCA4NUgxMTVNMTA4IDk1SDExNU0xMDggMTA1SDExNSIgc3Ryb2tlPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPC9zdmc+'">
+            </div>
+            <div class="card-info">
+              <h3 class="dish">${item.name}</h3>
+              <p class="desc">${item.desc}</p>
+              <div class="tags">
+                ${item.tags.map(tag => `<span class="pill">${tag}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <div class="price">${item.price}</div>
+            <button class="btn-primary" onclick="addToCart(${JSON.stringify(item).replace(/"/g, '&quot;')}, this)">Add to Cart</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Filter menu items by category
+    function filterByCategory(category) {
+      if (category === 'all') {
+        renderMenuItems(data);
+      } else {
+        const filteredItems = data.filter(item => item.cat === category);
+        renderMenuItems(filteredItems);
+      }
+    }
+
+    // Search functionality
+    function searchItems(query) {
+      const filteredItems = data.filter(item => 
+        item.name.toLowerCase().includes(query.toLowerCase()) || 
+        item.desc.toLowerCase().includes(query.toLowerCase()) ||
+        item.tags.some(tag => tag.toLowerCase().includes(query.toLowerCase()))
+      );
+      renderMenuItems(filteredItems);
+    }
+
+    // Initialize the menu
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMenuItems(data);
+      
+      // Tab functionality
+      document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          filterByCategory(tab.dataset.cat);
+        });
+      });
+      
+      // Search functionality
+      document.getElementById('search').addEventListener('input', (e) => {
+        searchItems(e.target.value);
+      });
+    });
+
+    // Make functions available globally
+    window.addToCart = addToCart;
+    window.removeFromCart = removeFromCart;
+    window.updateQuantity = updateQuantity;
+  </script>
+</body>
+
+</html>
+
+
+
+
+
+
