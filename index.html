@@ -35,29 +35,28 @@
     }
 
     body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-      body {
-  position: relative;
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  overflow-x: hidden;
-}
+    /* Background image layer */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('bg.png') no-repeat center center/cover;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      z-index: -1;
+    }
 
-/* Background image layer */
-body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url('bg.png') no-repeat center center/cover;
-  filter: grayscale(100%);
-  opacity: 0.5;
-  z-index: -1;
-}
-
+    body {
       background: radial-gradient(1200px 600px at 10% 10%, rgba(212, 175, 55, 0.06), transparent 6%),
                   radial-gradient(1000px 500px at 95% 90%, rgba(255, 204, 102, 0.04), transparent 8%),
                   var(--bg);
@@ -467,7 +466,7 @@ body::before {
     }
 
     .contact-text a {
-      color: var(--gold2r);
+      color: var(--gold2);
       text-decoration: none;
     }
 
@@ -775,11 +774,106 @@ body::before {
     .site-logo {
       width: 200px;
       height: 200px;
-
-      
       object-fit: contain;
       margin-left: 10px;
       border-radius: 8px; /* make corners slightly round */
+    }
+
+    /* Social Media Section Styles - MOBILE FRIENDLY */
+    .social-section {
+      margin-top: 40px;
+      padding: 20px 0;
+    }
+
+    .social-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .social-card {
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+      border-radius: 12px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(2, 6, 23, 0.7);
+    }
+
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      font-size: 28px;
+    }
+
+    .facebook-icon {
+      background: linear-gradient(135deg, #1877F2, #0D5CB6);
+    }
+
+    .instagram-icon {
+      background: linear-gradient(135deg, #E4405F, #C13584, #833AB4, #5851DB, #405DE6);
+    }
+
+    .wordpress-icon {
+      background: linear-gradient(135deg, #21759B, #1A5F7A);
+    }
+
+    .google-icon {
+      background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
+    }
+
+    .social-name {
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .social-desc {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .social-link {
+      background: var(--accent);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      color: #0b0b0d;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.15);
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 200px;
+      display: block;
+    }
+
+    .social-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.25);
+    }
+
+    .social-link:active {
+      transform: translateY(0) scale(0.98);
     }
 
     /* Tablet and Desktop Styles */
@@ -830,6 +924,11 @@ body::before {
       .cart-actions {
         flex-direction: row;
       }
+      
+      /* Social Media Grid for Tablet */
+      .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (min-width: 1024px) {
@@ -839,6 +938,43 @@ body::before {
       
       .gallery-grid {
         grid-template-columns: repeat(4, 1fr);
+      }
+      
+      /* Social Media Grid for Desktop */
+      .social-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .social-card {
+        padding: 24px 20px;
+      }
+    }
+
+    /* Mobile-specific optimizations */
+    @media (max-width: 480px) {
+      .social-card {
+        padding: 18px 16px;
+      }
+      
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 14px;
+      }
+      
+      .social-name {
+        font-size: 16px;
+      }
+      
+      .social-desc {
+        font-size: 13px;
+        margin-bottom: 16px;
+      }
+      
+      .social-link {
+        padding: 10px 20px;
+        font-size: 13px;
       }
     }
 
@@ -912,6 +1048,57 @@ body::before {
     </main>
   </div>
 
+  <!-- Social Media Section - MOBILE FRIENDLY -->
+  <section class="social-section">
+    <h2 class="section-title">Connect With Us</h2>
+    <div class="gold-line"></div>
+    <div class="social-grid">
+      <div class="social-card">
+        <div class="social-icon facebook-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+        </div>
+        <div class="social-name">Facebook</div>
+        <div class="social-desc">Follow us for updates and promotions</div>
+        <a href="https://www.facebook.com/share/1D4GJ7fL4L/" target="_blank" class="social-link">Follow</a>
+      </div>
+      
+      <div class="social-card">
+        <div class="social-icon instagram-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+        </div>
+        <div class="social-name">Instagram</div>
+        <div class="social-desc">See our delicious food photos</div>
+        <a href="https://www.instagram.com/chatkara_the_food_zone?igsh=ZHpsY3E2YXpybXc2" target="_blank" class="social-link">Follow</a>
+      </div>
+      
+      <div class="social-card">
+        <div class="social-icon wordpress-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.9 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.9 0 0-1.746.135-2.822.135-.47 0-1.028-.03-1.648-.08C3.678 4.275 6.2 2.853 9.073 2.853c2.86 0 5.433 1.426 6.915 3.627.17.283.318.59.442.914.12.316.182.63.182.93 0 .296-.04.585-.14.856M2.853 12c0-1.86.61-3.585 1.614-4.978l5.28 14.17c-3.453-1.226-5.894-4.57-5.894-8.192m9.142 4.73l2.69-7.46.9-2.493c.063.3.11.585.11.855 0 .855-.285 1.89-.75 3.36l-2.94 8.248c.33.03.6.045.81.045.48 0 .78-.09 1.05-.21 1.35-.615 2.562-2.06 3.531-4.11l-.75-2.07c-.66.75-1.35 1.26-2.01 1.56-.36.165-.705.24-1.05.24-.36 0-.705-.075-1.02-.21l1.23-3.45-1.26-3.45c-.33.09-.705.165-1.11.225-.405.06-.78.09-1.11.09-.36 0-.705-.015-1.035-.045l3.195 8.956z"/>
+          </svg>
+        </div>
+        <div class="social-name">Website</div>
+        <div class="social-desc">Visit our official website</div>
+        <a href="https://www.chatkarafastfood.wordpress.com" target="_blank" class="social-link">Visit</a>
+      </div>
+      
+      <div class="social-card">
+        <div class="social-icon google-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+        </div>
+        <div class="social-name">Google Reviews</div>
+        <div class="social-desc">Share your experience with us</div>
+        <a href="https://share.google/tryiznWMNC1c7g1CY" target="_blank" class="social-link">Review</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Cart Button -->
   <div class="cart-container">
     <button class="cart-button" id="cartButton">
@@ -961,8 +1148,9 @@ body::before {
   </div>
 
   <script>
+    // Your existing JavaScript code remains the same
     const data = [
-{"id":1,"cat":"बर्गर (Burger)","name":"आलू टिक्की बर्गर / Aloo Tikki Burger","price":"₹70","desc":"Crispy potato patty burger with fresh vegetables and sauces.","tags":["Vegetarian","Burger","Snack"],"img":"img/aloo-tikki-burger.jpeg"},
+      /{"id":1,"cat":"बर्गर (Burger)","name":"आलू टिक्की बर्गर / Aloo Tikki Burger","price":"₹70","desc":"Crispy potato patty burger with fresh vegetables and sauces.","tags":["Vegetarian","Burger","Snack"],"img":"img/aloo-tikki-burger.jpeg"},
 {"id":2,"cat":"बर्गर (Burger)","name":"वेज चीज बर्गर / Veg Cheese Burger","price":"₹100","desc":"Vegetable patty with melted cheese and fresh toppings.","tags":["Vegetarian","Burger","Cheese"],"img":"img/veg-cheese-burger.jpeg"},
 {"id":3,"cat":"बर्गर (Burger)","name":"वेज क्रिम बर्गर / Veg Cream Burger","price":"₹60","desc":"Creamy vegetable burger with special sauces.","tags":["Vegetarian","Burger","Cream"],"img":"img/veg-cream-burger.jpeg"},
 {"id":4,"cat":"बर्गर (Burger)","name":"शेज्वान क्रिम बर्गर / Schezwan Cream Burger","price":"₹50","desc":"Spicy Schezwan flavored cream burger with vegetables.","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-cream-burger.jpeg"},
@@ -1070,7 +1258,6 @@ body::before {
 {"id":91,"cat":"अन्य आइटम्स (Other Items)","name":"अलग अलग फ्लेवर की केक / Different Flavor Cakes","price":"₹69","desc":"Assorted flavor cakes available.","tags":["Vegetarian","Dessert","Cake"],"img":"img/cakes.jpeg"},
 {"id":92,"cat":"अन्य आइटम्स (Other Items)","name":"अलग अलग फ्लेवर की आइसक्रीम / Different Flavor Ice Cream","price":"₹150","desc":"Various flavor ice creams.","tags":["Vegetarian","Dessert","Ice Cream"],"img":"img/ice-cream.jpeg"}
 ];
-
     // Cart functionality
     let cart = [];
     const cartButton = document.getElementById('cartButton');
@@ -1305,12 +1492,4 @@ body::before {
     window.updateQuantity = updateQuantity;
   </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
