@@ -500,7 +500,7 @@
     /* Cart Styles */
     .cart-container {
       position: fixed;
-      bottom: 20px;
+      bottom: 80px;
       right: 20px;
       z-index: 100;
     }
@@ -779,10 +779,11 @@
       border-radius: 8px; /* make corners slightly round */
     }
 
-    /* Social Media Section Styles - MOBILE FRIENDLY */
+    /* Social Media Section Styles - LAST MEIN */
     .social-section {
       margin-top: 40px;
       padding: 20px 0;
+      order: 999; /* Ensures it stays at the end */
     }
 
     .social-grid {
@@ -876,6 +877,145 @@
       transform: translateY(0) scale(0.98);
     }
 
+    /* Navigation Buttons */
+    .nav-buttons {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      z-index: 99;
+    }
+
+    .nav-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold1), var(--gold2));
+      color: #0b0b0d;
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 8px 30px rgba(212, 175, 55, 0.12);
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+    }
+
+    /* Mobile-specific optimizations */
+    @media (max-width: 768px) {
+      body {
+        padding: 12px;
+      }
+      
+      .container {
+        gap: 16px;
+      }
+      
+      .card-header {
+        flex-direction: column;
+      }
+      
+      .thumb {
+        width: 100%;
+        height: 200px;
+      }
+      
+      .card-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      
+      .btn-primary {
+        width: 100%;
+      }
+      
+      .site-logo {
+        width: 120px;
+        height: 120px;
+        margin-left: 0;
+      }
+      
+      .title {
+        flex-direction: column;
+        text-align: center;
+        gap: 16px;
+      }
+      
+      .tabs-scroll {
+        padding: 8px 0;
+      }
+      
+      .tab {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+      
+      .cart-container {
+        bottom: 70px;
+        right: 15px;
+      }
+      
+      .cart-button {
+        width: 55px;
+        height: 55px;
+      }
+      
+      .nav-buttons {
+        right: 15px;
+        bottom: 15px;
+      }
+      
+      .nav-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .social-card {
+        padding: 18px 16px;
+      }
+      
+      .social-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        margin-bottom: 14px;
+      }
+      
+      .social-name {
+        font-size: 16px;
+      }
+      
+      .social-desc {
+        font-size: 13px;
+        margin-bottom: 16px;
+      }
+      
+      .social-link {
+        padding: 10px 20px;
+        font-size: 13px;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .gallery-item {
+        height: 150px;
+      }
+    }
+
     /* Tablet and Desktop Styles */
     @media (min-width: 768px) {
       body {
@@ -884,7 +1024,7 @@
       
       .container {
         display: grid;
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 1fr;
         gap: 24px;
         align-items: start;
       }
@@ -950,34 +1090,6 @@
       }
     }
 
-    /* Mobile-specific optimizations */
-    @media (max-width: 480px) {
-      .social-card {
-        padding: 18px 16px;
-      }
-      
-      .social-icon {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        margin-bottom: 14px;
-      }
-      
-      .social-name {
-        font-size: 16px;
-      }
-      
-      .social-desc {
-        font-size: 13px;
-        margin-bottom: 16px;
-      }
-      
-      .social-link {
-        padding: 10px 20px;
-        font-size: 13px;
-      }
-    }
-
     /* Print Styles */
     @media print {
       body {
@@ -987,7 +1099,8 @@
       
       .cart-container,
       .cart-modal,
-      .btn-ghost {
+      .btn-ghost,
+      .nav-buttons {
         display: none;
       }
     }
@@ -1046,64 +1159,64 @@
         <!-- <button class="btn-ghost" onclick="window.print()">Print Menu</button> -->
       </div>
     </main>
+
+    <!-- Social Media Section - AB LAST MEIN -->
+    <section class="social-section">
+      <h2 class="section-title">Connect With Us</h2>
+      <div class="gold-line"></div>
+      <div class="social-grid">
+        <div class="social-card">
+          <div class="social-icon facebook-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+            </svg>
+          </div>
+          <div class="social-name">Facebook</div>
+          <div class="social-desc">Follow us for updates and promotions</div>
+          <a href="https://www.facebook.com/share/1D4GJ7fL4L/" target="_blank" class="social-link">Follow</a>
+        </div>
+        
+        <div class="social-card">
+          <div class="social-icon instagram-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </div>
+          <div class="social-name">Instagram</div>
+          <div class="social-desc">See our delicious food photos</div>
+          <a href="https://www.instagram.com/chatkara_the_food_zone?igsh=ZHpsY3E2YXpybXc2" target="_blank" class="social-link">Follow</a>
+        </div>
+        
+        <div class="social-card">
+          <div class="social-icon wordpress-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.9 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.9 0 0-1.746.135-2.822.135-.47 0-1.028-.03-1.648-.08C3.678 4.275 6.2 2.853 9.073 2.853c2.86 0 5.433 1.426 6.915 3.627.17.283.318.59.442.914.12.316.182.63.182.93 0 .296-.04.585-.14.856M2.853 12c0-1.86.61-3.585 1.614-4.978l5.28 14.17c-3.453-1.226-5.894-4.57-5.894-8.192m9.142 4.73l2.69-7.46.9-2.493c.063.3.11.585.11.855 0 .855-.285 1.89-.75 3.36l-2.94 8.248c.33.03.6.045.81.045.48 0 .78-.09 1.05-.21 1.35-.615 2.562-2.06 3.531-4.11l-.75-2.07c-.66.75-1.35 1.26-2.01 1.56-.36.165-.705.24-1.05.24-.36 0-.705-.075-1.02-.21l1.23-3.45-1.26-3.45c-.33.09-.705.165-1.11.225-.405.06-.78.09-1.11.09-.36 0-.705-.015-1.035-.045l3.195 8.956z"/>
+            </svg>
+          </div>
+          <div class="social-name">Website</div>
+          <div class="social-desc">Visit our official website</div>
+          <a href="https://www.chatkarafastfood.wordpress.com" target="_blank" class="social-link">Visit</a>
+        </div>
+        
+        <div class="social-card">
+          <div class="social-icon google-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+            </svg>
+          </div>
+          <div class="social-name">Google Reviews</div>
+          <div class="social-desc">Share your experience with us</div>
+          <a href="https://share.google/tryiznWMNC1c7g1CY" target="_blank" class="social-link">Review</a>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:30px;">
+        <div class="social-name">Contact US</div>
+        <div class="social-desc" style="margin-bottom:10px;">Contact Mobile NO: 6269110000</div>
+        <a class="contact-number" href="tel:+916269110000" style="color:var(--gold2);text-decoration:none;font-weight:600;font-size:18px;">+91 62691 10000</a>
+      </div>
+    </section>
   </div>
-
-  <!-- Social Media Section - MOBILE FRIENDLY -->
-  <section class="social-section">
-    <h2 class="section-title">Connect With Us</h2>
-    <div class="gold-line"></div>
-    <div class="social-grid">
-      <div class="social-card">
-        <div class="social-icon facebook-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-          </svg>
-        </div>
-        <div class="social-name">Facebook</div>
-        <div class="social-desc">Follow us for updates and promotions</div>
-        <a href="https://www.facebook.com/share/1D4GJ7fL4L/" target="_blank" class="social-link">Follow</a>
-      </div>
-      
-      <div class="social-card">
-        <div class="social-icon instagram-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-          </svg>
-        </div>
-        <div class="social-name">Instagram</div>
-        <div class="social-desc">See our delicious food photos</div>
-        <a href="https://www.instagram.com/chatkara_the_food_zone?igsh=ZHpsY3E2YXpybXc2" target="_blank" class="social-link">Follow</a>
-      </div>
-      
-      <div class="social-card">
-        <div class="social-icon wordpress-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-            <path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.9 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.9 0 0-1.746.135-2.822.135-.47 0-1.028-.03-1.648-.08C3.678 4.275 6.2 2.853 9.073 2.853c2.86 0 5.433 1.426 6.915 3.627.17.283.318.59.442.914.12.316.182.63.182.93 0 .296-.04.585-.14.856M2.853 12c0-1.86.61-3.585 1.614-4.978l5.28 14.17c-3.453-1.226-5.894-4.57-5.894-8.192m9.142 4.73l2.69-7.46.9-2.493c.063.3.11.585.11.855 0 .855-.285 1.89-.75 3.36l-2.94 8.248c.33.03.6.045.81.045.48 0 .78-.09 1.05-.21 1.35-.615 2.562-2.06 3.531-4.11l-.75-2.07c-.66.75-1.35 1.26-2.01 1.56-.36.165-.705.24-1.05.24-.36 0-.705-.075-1.02-.21l1.23-3.45-1.26-3.45c-.33.09-.705.165-1.11.225-.405.06-.78.09-1.11.09-.36 0-.705-.015-1.035-.045l3.195 8.956z"/>
-          </svg>
-        </div>
-        <div class="social-name">Website</div>
-        <div class="social-desc">Visit our official website</div>
-        <a href="https://www.chatkarafastfood.wordpress.com" target="_blank" class="social-link">Visit</a>
-      </div>
-      
-      <div class="social-card">
-        <div class="social-icon google-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-          </svg>
-        </div>
-        <div class="social-name">Google Reviews</div>
-        <div class="social-desc">Share your experience with us</div>
-        <a href="https://share.google/tryiznWMNC1c7g1CY" target="_blank" class="social-link">Review</a>
-      </div>
-    </div>
-
-     <div class="social-name">Contact US</div>
-        <div class="social-desc">Contact Mobile NO: 6269110000</div>
-    <a class="contact-number" href="tel:+916269110000">+91 62691 10000</a>
-      </div>
-    </div>
-  </section>
 
   <!-- Cart Button -->
   <div class="cart-container">
@@ -1115,6 +1228,12 @@
       </svg>
       <span class="cart-count" id="cartCount">0</span>
     </button>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button class="nav-btn" id="scrollTopBtn" title="Scroll to top">↑</button>
+    <button class="nav-btn" id="scrollBottomBtn" title="Scroll to bottom">↓</button>
   </div>
 
   <!-- Cart Modal -->
@@ -1156,114 +1275,117 @@
   <script>
     // Your existing JavaScript code remains the same
     const data = [
-{"id":1,"cat":"बर्गर (Burger)","name":"आलू टिक्की बर्गर / Aloo Tikki Burger","price":"₹70","desc":"Crispy potato patty burger with fresh vegetables and sauces.","tags":["Vegetarian","Burger","Snack"],"img":"img/aloo-tikki-burger.jpeg"},
-{"id":2,"cat":"बर्गर (Burger)","name":"वेज चीज बर्गर / Veg Cheese Burger","price":"₹100","desc":"Vegetable patty with melted cheese and fresh toppings.","tags":["Vegetarian","Burger","Cheese"],"img":"img/veg-cheese-burger.jpeg"},
-{"id":3,"cat":"बर्गर (Burger)","name":"वेज क्रिम बर्गर / Veg Cream Burger","price":"₹60","desc":"Creamy vegetable burger with special sauces.","tags":["Vegetarian","Burger","Cream"],"img":"img/veg-cream-burger.jpeg"},
-{"id":4,"cat":"बर्गर (Burger)","name":"शेज्वान क्रिम बर्गर / Schezwan Cream Burger","price":"₹50","desc":"Spicy Schezwan flavored cream burger with vegetables.","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-cream-burger.jpeg"},
-{"id":5,"cat":"बर्गर (Burger)","name":"वेज बर्गर / Veg Burger","price":"₹50","desc":"Classic vegetable burger with fresh fillings.","tags":["Vegetarian","Burger","Basic"],"img":"img/veg-burger.jpeg"},
-{"id":6,"cat":"बर्गर (Burger)","name":"शेज़वान वेज बर्गर / Schezwan Veg Burger","price":"₹50","desc":"Spicy Schezwan style vegetable burger.","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-veg-burger.jpeg"},
-{"id":7,"cat":"बर्गर (Burger)","name":"बर्गर पिज़्ज़ा / Burger Pizza","price":"₹150","desc":"Unique combination of burger and pizza flavors.","tags":["Vegetarian","Burger","Pizza"],"img":"img/burger-pizza.jpeg"},
-{"id":8,"cat":"बर्गर (Burger)","name":"शेज़वान स्पाईसी बर्गर / Schezwan Spicy Burger","price":"₹90","desc":"Extra spicy Schezwan flavored burger.","tags":["Vegetarian","Burger","Schezwan","Spicy"],"img":"img/schezwan-spicy-burger.jpeg"},
-{"id":9,"cat":"बर्गर (Burger)","name":"शेज़वान टिक्की बर्गर / Schezwan Tikki Burger","price":"₹70","desc":"Schezwan flavored potato tikki burger.","tags":["Vegetarian","Burger","Schezwan","Tikki"],"img":"img/schezwan-tikki-burger.jpeg"},
-{"id":10,"cat":"बर्गर (Burger)","name":"मेयोनिज चीज बर्गर / Mayonnaise Cheese Burger","price":"₹140","desc":"Cheese burger with creamy mayonnaise dressing.","tags":["Vegetarian","Burger","Cheese","Mayonnaise"],"img":"img/mayonnaise-cheese-burger.jpeg"},
-{"id":11,"cat":"बर्गर (Burger)","name":"डबल टिक्की बर्गर / Double Tikki Burger","price":"₹180","desc":"Double potato patty burger with extra fillings.","tags":["Vegetarian","Burger","Double"],"img":"img/double-tikki-burger.jpeg"},
-{"id":12,"cat":"बर्गर (Burger)","name":"पनीर चीज बर्गर / Paneer Cheese Burger","price":"₹190","desc":"Paneer and cheese stuffed burger with fresh vegetables.","tags":["Vegetarian","Burger","Paneer","Cheese"],"img":"img/paneer-cheese-burger.jpeg"},
-{"id":13,"cat":"बर्गर (Burger)","name":"तंदूरी स्मोकी बर्गर / Tandoori Smoky Burger","price":"₹200","desc":"Smoky tandoori flavored vegetable burger.","tags":["Vegetarian","Burger","Tandoori","Smoky"],"img":"img/tandoori-smoky-burger.jpeg"},
-{"id":14,"cat":"बर्गर (Burger)","name":"चटकारा स्पेशल बर्गर / Chatkara Special Burger","price":"₹250","desc":"Special house signature burger with unique flavors.","tags":["Vegetarian","Burger","Special"],"img":"img/chatkara-special-burger.jpeg"},
-{"id":15,"cat":"बर्गर (Burger)","name":"डबल चीज बर्गर / Double Cheese Burger","price":"₹130","desc":"Double cheese loaded vegetable burger.","tags":["Vegetarian","Burger","Cheese","Double"],"img":"img/double-cheese-burger.jpeg"},
+{"id":1,"cat":"Burger","name":"Aloo Tikki Burger","price":"₹70","tags":["Vegetarian","Burger","Snack"],"img":"img/aloo-tikki-burger.jpeg"},
+{"id":2,"cat":"Burger","name":"Veg Cheese Burger","price":"₹100","tags":["Vegetarian","Burger","Cheese"],"img":"img/veg-cheese-burger.jpeg"},
+{"id":3,"cat":"Burger","name":"Veg Cream Burger","price":"₹60","tags":["Vegetarian","Burger","Cream"],"img":"img/veg-cream-burger.jpeg"},
+{"id":4,"cat":"Burger","name":"Schezwan Cream Burger","price":"₹50","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-cream-burger.jpeg"},
+{"id":5,"cat":"Burger","name":"Veg Burger","price":"₹50","tags":["Vegetarian","Burger","Basic"],"img":"img/veg-burger.jpeg"},
+{"id":6,"cat":"Burger","name":"Schezwan Veg Burger","price":"₹50","tags":["Vegetarian","Burger","Schezwan"],"img":"img/schezwan-veg-burger.jpeg"},
+{"id":7,"cat":"Burger","name":"Burger Pizza","price":"₹150","tags":["Vegetarian","Burger","Pizza"],"img":"img/burger-pizza.jpeg"},
+{"id":8,"cat":"Burger","name":"Schezwan Spicy Burger","price":"₹90","tags":["Vegetarian","Burger","Schezwan","Spicy"],"img":"img/schezwan-spicy-burger.jpeg"},
+{"id":9,"cat":"Burger","name":"Schezwan Tikki Burger","price":"₹70","tags":["Vegetarian","Burger","Schezwan","Tikki"],"img":"img/schezwan-tikki-burger.jpeg"},
+{"id":10,"cat":"Burger","name":"Mayonnaise Cheese Burger","price":"₹140","tags":["Vegetarian","Burger","Cheese","Mayonnaise"],"img":"img/mayonnaise-cheese-burger.jpeg"},
+{"id":11,"cat":"Burger","name":"Double Tikki Burger","price":"₹180","tags":["Vegetarian","Burger","Double"],"img":"img/double-tikki-burger.jpeg"},
+{"id":12,"cat":"Burger","name":"Paneer Cheese Burger","price":"₹190","tags":["Vegetarian","Burger","Paneer","Cheese"],"img":"img/paneer-cheese-burger.jpeg"},
+{"id":13,"cat":"Burger","name":"Tandoori Smoky Burger","price":"₹200","tags":["Vegetarian","Burger","Tandoori","Smoky"],"img":"img/tandoori-smoky-burger.jpeg"},
+{"id":14,"cat":"Burger","name":"Chatkara Special Burger","price":"₹250","tags":["Vegetarian","Burger","Special"],"img":"img/chatkara-special-burger.jpeg"},
+{"id":15,"cat":"Burger","name":"Double Cheese Burger","price":"₹130","tags":["Vegetarian","Burger","Cheese","Double"],"img":"img/double-cheese-burger.jpeg"},
 
-{"id":16,"cat":"वड़ापाव (Vadapav)","name":"पनीर वड़ापाव / Paneer Vadapav","price":"₹65","desc":"Soft bun with spicy paneer filling and chutneys.","tags":["Vegetarian","Snack","Maharashtrian"],"img":"img/paneer-vadapav.jpeg"},
-{"id":17,"cat":"वड़ापाव (Vadapav)","name":"क्रिम वड़ापाव / Cream Vadapav","price":"₹50","desc":"Creamy and soft vadapav with special fillings.","tags":["Vegetarian","Snack","Cream"],"img":"img/cream-vadapav.jpeg"},
-{"id":18,"cat":"वड़ापाव (Vadapav)","name":"चीज वड़ापाव / Cheese Vadapav","price":"₹65","desc":"Cheesy potato patty in soft bun with chutneys.","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-vadapav.jpeg"},
-{"id":19,"cat":"वड़ापाव (Vadapav)","name":"शेज़वान क्रिम वड़ापाव / Schezwan Cream Vadapav","price":"₹55","desc":"Spicy Schezwan cream filled vadapav.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-cream-vadapav.jpeg"},
-{"id":20,"cat":"वड़ापाव (Vadapav)","name":"वड़ापाव / Vadapav","price":"₹50","desc":"Classic Mumbai style potato patty in bun.","tags":["Vegetarian","Snack","Classic"],"img":"img/vadapav.jpeg"},
-{"id":21,"cat":"वड़ापाव (Vadapav)","name":"शेज़वान वड़ापाव / Schezwan Vadapav","price":"₹50","desc":"Spicy Schezwan flavored potato vadapav.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-vadapav.jpeg"},
-{"id":22,"cat":"वड़ापाव (Vadapav)","name":"चटकारा स्पेशल वड़ापाव / Chatkara Special Vadapav","price":"₹100","desc":"Special house recipe vadapav with unique flavors.","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-vadapav.jpeg"},
+{"id":16,"cat":"Vadapav","name":"Paneer Vadapav","price":"₹65","tags":["Vegetarian","Snack","Maharashtrian"],"img":"img/paneer-vadapav.jpeg"},
+{"id":17,"cat":"Vadapav","name":"Cream Vadapav","price":"₹50","tags":["Vegetarian","Snack","Cream"],"img":"img/cream-vadapav.jpeg"},
+{"id":18,"cat":"Vadapav","name":"Cheese Vadapav","price":"₹65","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-vadapav.jpeg"},
+{"id":19,"cat":"Vadapav","name":"Schezwan Cream Vadapav","price":"₹55","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-cream-vadapav.jpeg"},
+{"id":20,"cat":"Vadapav","name":"Vadapav","price":"₹50","tags":["Vegetarian","Snack","Classic"],"img":"img/vadapav.jpeg"},
+{"id":21,"cat":"Vadapav","name":"Schezwan Vadapav","price":"₹50","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-vadapav.jpeg"},
+{"id":22,"cat":"Vadapav","name":"Chatkara Special Vadapav","price":"₹100","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-vadapav.jpeg"},
 
-{"id":23,"cat":"पिज़्ज़ा (Pizza)","name":"ओनली चीज़ पिज़्ज़ा / Only Cheese Pizza","price":"₹250","desc":"Cheese loaded pizza with delicious toppings.","tags":["Vegetarian","Pizza","Cheese"],"img":"img/only-cheese-pizza.jpeg"},
-{"id":24,"cat":"पिज़्ज़ा (Pizza)","name":"पनीर चीज़ पिज़्ज़ा / Paneer Cheese Pizza","price":"₹260","desc":"Paneer and cheese combination pizza.","tags":["Vegetarian","Pizza","Paneer"],"img":"img/paneer-cheese-pizza.jpeg"},
-{"id":25,"cat":"पिज़्ज़ा (Pizza)","name":"वेज पिज़्ज़ा / Veg Pizza","price":"₹200","desc":"Classic vegetable pizza with mixed toppings.","tags":["Vegetarian","Pizza","Vegetable"],"img":"img/veg-pizza.jpeg"},
-{"id":26,"cat":"पिज़्ज़ा (Pizza)","name":"ऑनियन कैप्सिकम पिज़्ज़ा / Onion Capsicum Pizza","price":"₹200","desc":"Onion and capsicum topped pizza.","tags":["Vegetarian","Pizza","Onion","Capsicum"],"img":"img/onion-capsicum-pizza.jpeg"},
-{"id":27,"cat":"पिज़्ज़ा (Pizza)","name":"चीज़ कॉर्न पिज़्ज़ा / Cheese Corn Pizza","price":"₹270","desc":"Sweet corn and cheese loaded pizza.","tags":["Vegetarian","Pizza","Corn","Cheese"],"img":"img/cheese-corn-pizza.jpeg"},
-{"id":28,"cat":"पिज़्ज़ा (Pizza)","name":"तंदूरी स्मोकी पिज़्ज़ा / Tandoori Smoky Pizza","price":"₹250","desc":"Smoky tandoori flavored vegetable pizza.","tags":["Vegetarian","Pizza","Tandoori"],"img":"img/tandoori-smoky-pizza.jpeg"},
-{"id":29,"cat":"पिज़्ज़ा (Pizza)","name":"ऑलिव पनीर चीज़ पिज़्ज़ा / Olive Paneer Cheese Pizza","price":"₹250","desc":"Olive, paneer and cheese combination pizza.","tags":["Vegetarian","Pizza","Olive","Paneer"],"img":"img/olive-paneer-cheese-pizza.jpeg"},
-{"id":30,"cat":"पिज़्ज़ा (Pizza)","name":"तंदूरी पनीर पिज़्ज़ा / Tandoori Paneer Pizza","price":"₹300","desc":"Tandoori marinated paneer pizza.","tags":["Vegetarian","Pizza","Paneer","Tandoori"],"img":"img/tandoori-paneer-pizza.jpeg"},
-{"id":31,"cat":"पिज़्ज़ा (Pizza)","name":"शेज़वान स्पाइसी पिज़्ज़ा / Schezwan Spicy Pizza","price":"₹250","desc":"Spicy Schezwan flavored pizza.","tags":["Vegetarian","Pizza","Schezwan","Spicy"],"img":"img/schezwan-spicy-pizza.jpeg"},
-{"id":32,"cat":"पिज़्ज़ा (Pizza)","name":"चटकारा स्पेशल पिज़्ज़ा / Chatkara Special Pizza","price":"₹250","desc":"Special house recipe pizza with unique toppings.","tags":["Vegetarian","Pizza","Special"],"img":"img/chatkara-special-pizza.jpeg"},
+{"id":23,"cat":"Pizza","name":"Only Cheese Pizza","price":"₹250","tags":["Vegetarian","Pizza","Cheese"],"img":"img/only-cheese-pizza.jpeg"},
+{"id":24,"cat":"Pizza","name":"Paneer Cheese Pizza","price":"₹260","tags":["Vegetarian","Pizza","Paneer"],"img":"img/paneer-cheese-pizza.jpeg"},
+{"id":25,"cat":"Pizza","name":"Veg Pizza","price":"₹200","tags":["Vegetarian","Pizza","Vegetable"],"img":"img/veg-pizza.jpeg"},
+{"id":26,"cat":"Pizza","name":"Onion Capsicum Pizza","price":"₹200","tags":["Vegetarian","Pizza","Onion","Capsicum"],"img":"img/onion-capsicum-pizza.jpeg"},
+{"id":27,"cat":"Pizza","name":"Cheese Corn Pizza","price":"₹270","tags":["Vegetarian","Pizza","Corn","Cheese"],"img":"img/cheese-corn-pizza.jpeg"},
+{"id":28,"cat":"Pizza","name":"Tandoori Smoky Pizza","price":"₹250","tags":["Vegetarian","Pizza","Tandoori"],"img":"img/tandoori-smoky-pizza.jpeg"},
+{"id":29,"cat":"Pizza","name":"Olive Paneer Cheese Pizza","price":"₹250","tags":["Vegetarian","Pizza","Olive","Paneer"],"img":"img/olive-paneer-cheese-pizza.jpeg"},
+{"id":30,"cat":"Pizza","name":"Tandoori Paneer Pizza","price":"₹300","tags":["Vegetarian","Pizza","Paneer","Tandoori"],"img":"img/tandoori-paneer-pizza.jpeg"},
+{"id":31,"cat":"Pizza","name":"Schezwan Spicy Pizza","price":"₹250","tags":["Vegetarian","Pizza","Schezwan","Spicy"],"img":"img/schezwan-spicy-pizza.jpeg"},
+{"id":32,"cat":"Pizza","name":"Chatkara Special Pizza","price":"₹250","tags":["Vegetarian","Pizza","Special"],"img":"img/chatkara-special-pizza.jpeg"},
 
-{"id":33,"cat":"फ्रैंकी रोल्स (Frankie Rolls)","name":"वेज चीज़ फ्रैंकी / Veg Cheese Frankie","price":"₹70","desc":"Vegetable and cheese stuffed frankie roll.","tags":["Vegetarian","Frankie","Cheese"],"img":"img/veg-cheese-frankie.jpeg"},
-{"id":34,"cat":"फ्रैंकी रोल्स (Frankie Rolls)","name":"वेज फ्रैंकी / Veg Frankie","price":"₹50","desc":"Classic vegetable frankie roll with sauces.","tags":["Vegetarian","Frankie","Basic"],"img":"img/veg-frankie.jpeg"},
-{"id":35,"cat":"फ्रैंकी रोल्स (Frankie Rolls)","name":"चटकारा स्पेशल फ्रैंकी / Chatkara Special Frankie","price":"₹110","desc":"Special house recipe frankie with unique fillings.","tags":["Vegetarian","Frankie","Special"],"img":"img/chatkara-special-frankie.jpeg"},
+{"id":33,"cat":"Frankie Rolls","name":"Veg Cheese Frankie","price":"₹70","tags":["Vegetarian","Frankie","Cheese"],"img":"img/veg-cheese-frankie.jpeg"},
+{"id":34,"cat":"Frankie Rolls","name":"Veg Frankie","price":"₹50","tags":["Vegetarian","Frankie","Basic"],"img":"img/veg-frankie.jpeg"},
+{"id":35,"cat":"Frankie Rolls","name":"Chatkara Special Frankie","price":"₹110","tags":["Vegetarian","Frankie","Special"],"img":"img/chatkara-special-frankie.jpeg"},
 
-{"id":36,"cat":"मैगी (Maggi)","name":"वेजीटेबल मैगी / Vegetable Maggi","price":"₹70","desc":"Maggi noodles with fresh vegetables.","tags":["Vegetarian","Maggi","Noodles"],"img":"img/vegetable-maggi.jpeg"},
-{"id":37,"cat":"मैगी (Maggi)","name":"वेजीटेबल क्रिम मैगी / Vegetable Cream Maggi","price":"₹80","desc":"Creamy vegetable maggi with rich texture.","tags":["Vegetarian","Maggi","Cream"],"img":"img/vegetable-cream-maggi.jpeg"},
-{"id":38,"cat":"मैगी (Maggi)","name":"शेजवान स्पाईसी मैगी / Schezwan Spicy Maggi","price":"₹90","desc":"Spicy Schezwan flavored maggi noodles.","tags":["Vegetarian","Maggi","Schezwan"],"img":"img/schezwan-spicy-maggi.jpeg"},
-{"id":39,"cat":"मैगी (Maggi)","name":"प्लेन मैगी / Plain Maggi","price":"₹50","desc":"Classic plain maggi noodles.","tags":["Vegetarian","Maggi","Basic"],"img":"img/plain-maggi.jpeg"},
-{"id":40,"cat":"मैगी (Maggi)","name":"एकस्ट्रा मसाला मैगी / Extra Masala Maggi","price":"₹60","desc":"Maggi with extra spices and masala.","tags":["Vegetarian","Maggi","Spicy"],"img":"img/extra-masala-maggi.jpeg"},
-{"id":41,"cat":"मैगी (Maggi)","name":"क्रिम मैगी / Cream Maggi","price":"₹65","desc":"Creamy and rich maggi noodles.","tags":["Vegetarian","Maggi","Cream"],"img":"img/cream-maggi.jpeg"},
-{"id":42,"cat":"मैगी (Maggi)","name":"चीज कोर्न मैगी / Cheese Corn Maggi","price":"₹90","desc":"Cheese and corn loaded maggi noodles.","tags":["Vegetarian","Maggi","Cheese","Corn"],"img":"img/cheese-corn-maggi.jpeg"},
-{"id":43,"cat":"मैगी (Maggi)","name":"चटकारा स्पेशल मैगी / Chatkara Special Maggi","price":"₹120","desc":"Special house recipe maggi with unique flavors.","tags":["Vegetarian","Maggi","Special"],"img":"img/chatkara-special-maggi.jpeg"},
+{"id":36,"cat":"Maggi","name":"Vegetable Maggi","price":"₹70","tags":["Vegetarian","Maggi","Noodles"],"img":"img/vegetable-maggi.jpeg"},
+{"id":37,"cat":"Maggi","name":"Vegetable Cream Maggi","price":"₹80","tags":["Vegetarian","Maggi","Cream"],"img":"img/vegetable-cream-maggi.jpeg"},
+{"id":38,"cat":"Maggi","name":"Schezwan Spicy Maggi","price":"₹90","tags":["Vegetarian","Maggi","Schezwan"],"img":"img/schezwan-spicy-maggi.jpeg"},
+{"id":39,"cat":"Maggi","name":"Plain Maggi","price":"₹50","tags":["Vegetarian","Maggi","Basic"],"img":"img/plain-maggi.jpeg"},
+{"id":40,"cat":"Maggi","name":"Extra Masala Maggi","price":"₹60","tags":["Vegetarian","Maggi","Spicy"],"img":"img/extra-masala-maggi.jpeg"},
+{"id":41,"cat":"Maggi","name":"Cream Maggi","price":"₹65","tags":["Vegetarian","Maggi","Cream"],"img":"img/cream-maggi.jpeg"},
+{"id":42,"cat":"Maggi","name":"Cheese Corn Maggi","price":"₹90","tags":["Vegetarian","Maggi","Cheese","Corn"],"img":"img/cheese-corn-maggi.jpeg"},
+{"id":43,"cat":"Maggi","name":"Chatkara Special Maggi","price":"₹120","tags":["Vegetarian","Maggi","Special"],"img":"img/chatkara-special-maggi.jpeg"},
 
-{"id":44,"cat":"चाट कॉर्नर (Chat Corner)","name":"आलू टिक्की चाट (half) / Aloo Tikki Chaat (Half)","price":"₹50","desc":"Half portion of spicy potato tikki chaat.","tags":["Vegetarian","Chaat","Snack"],"img":"img/aloo-tikki-chaat-half.jpeg"},
-{"id":45,"cat":"चाट कॉर्नर (Chat Corner)","name":"आलू टिक्की चाट (full) / Aloo Tikki Chaat (Full)","price":"₹80","desc":"Full portion of delicious potato tikki chaat.","tags":["Vegetarian","Chaat","Snack"],"img":"img/aloo-tikki-chaat-half.jpeg"},
-{"id":46,"cat":"चाट कॉर्नर (Chat Corner)","name":"भेल मुड़ी / Bhel Muri","price":"₹50","desc":"Classic Mumbai style bhel puri with chutneys.","tags":["Vegetarian","Chaat","Mumbai"],"img":"img/bhel-muri.jpeg"},
-{"id":47,"cat":"चाट कॉर्नर (Chat Corner)","name":"चटपटी चना दाल / Chatpati Chana Dal","price":"₹50","desc":"Spicy and tangy chana dal chaat.","tags":["Vegetarian","Chaat","Healthy"],"img":"img/chatpati-chana-dal.jpeg"},
-{"id":48,"cat":"चाट कॉर्नर (Chat Corner)","name":"दाबेली / Dabeli","price":"₹50","desc":"Gujarati style dabeli with sweet and spicy flavors.","tags":["Vegetarian","Chaat","Gujarati"],"img":"img/dabeli.jpeg"},
-{"id":49,"cat":"चाट कॉर्नर (Chat Corner)","name":"ब्रेड़ पकोड़ा / Bread Pakoda","price":"₹60","desc":"Crispy bread pakoda with potato filling.","tags":["Vegetarian","Snack","Fried"],"img":"img/bread-pakoda.jpeg"},
+{"id":44,"cat":"Chat Corner","name":"Aloo Tikki Chaat (Half)","price":"₹50","tags":["Vegetarian","Chaat","Snack"],"img":"img/aloo-tikki-chaat-half.jpeg"},
+{"id":45,"cat":"Chat Corner","name":"Aloo Tikki Chaat (Full)","price":"₹80","tags":["Vegetarian","Chaat","Snack"],"img":"img/aloo-tikki-chaat-half.jpeg"},
+{"id":46,"cat":"Chat Corner","name":"Bhel Muri","price":"₹50","tags":["Vegetarian","Chaat","Mumbai"],"img":"img/bhel-muri.jpeg"},
+{"id":47,"cat":"Chat Corner","name":"Chatpati Chana Dal","price":"₹50","tags":["Vegetarian","Chaat","Healthy"],"img":"img/chatpati-chana-dal.jpeg"},
+{"id":48,"cat":"Chat Corner","name":"Dabeli","price":"₹50","tags":["Vegetarian","Chaat","Gujarati"],"img":"img/dabeli.jpeg"},
+{"id":49,"cat":"Chat Corner","name":"Bread Pakoda","price":"₹60","tags":["Vegetarian","Snack","Fried"],"img":"img/bread-pakoda.jpeg"},
 
-{"id":50,"cat":"पाव भाजी (Pav Bhaji)","name":"बटर पाव भाजी / Butter Pav Bhaji","price":"₹190","desc":"Butter loaded pav bhaji with soft buns.","tags":["Vegetarian","Main Course","Maharashtrian"],"img":"img/butter-pav-bhaji.jpeg"},
-{"id":51,"cat":"पाव भाजी (Pav Bhaji)","name":"पाव भाजी (Half) / Pav Bhaji (Half)","price":"₹60","desc":"Half portion of classic pav bhaji.","tags":["Vegetarian","Main Course","Half"],"img":"img/pav-bhaji-half.jpeg"},
-{"id":52,"cat":"पाव भाजी (Pav Bhaji)","name":"पाव भाजी (Full) / Pav Bhaji (Full)","price":"₹100","desc":"Full portion of delicious mixed vegetable bhaji.","tags":["Vegetarian","Main Course","Full"],"img":"img/pav-bhaji-half.jpeg"},
-{"id":53,"cat":"पाव भाजी (Pav Bhaji)","name":"पनीर बटर पाव भाजी / Paneer Butter Pav Bhaji","price":"₹200","desc":"Paneer added butter pav bhaji.","tags":["Vegetarian","Main Course","Paneer"],"img":"img/paneer-butter-pav-bhaji.jpeg"},
+{"id":50,"cat":"Pav Bhaji","name":"Butter Pav Bhaji","price":"₹190","tags":["Vegetarian","Main Course","Maharashtrian"],"img":"img/butter-pav-bhaji.jpeg"},
+{"id":51,"cat":"Pav Bhaji","name":"Pav Bhaji (Half)","price":"₹60","tags":["Vegetarian","Main Course","Half"],"img":"img/pav-bhaji-half.jpeg"},
+{"id":52,"cat":"Pav Bhaji","name":"Pav Bhaji (Full)","price":"₹100","tags":["Vegetarian","Main Course","Full"],"img":"img/pav-bhaji-half.jpeg"},
+{"id":53,"cat":"Pav Bhaji","name":"Paneer Butter Pav Bhaji","price":"₹200","tags":["Vegetarian","Main Course","Paneer"],"img":"img/paneer-butter-pav-bhaji.jpeg"},
 
-{"id":54,"cat":"फ्रेंच फ्राई (French Fries)","name":"चीज फ्रेंच फ्राई / Cheese French Fries","price":"₹99","desc":"Cheese topped crispy french fries.","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-french-fries.jpeg"},
-{"id":55,"cat":"फ्रेंच फ्राई (French Fries)","name":"शेज़वान फ्रेंच फ्राई / Schezwan French Fries","price":"₹120","desc":"Spicy Schezwan flavored french fries.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-french-fries.jpeg"},
-{"id":56,"cat":"फ्रेंच फ्राई (French Fries)","name":"मैगी मसाला फ्रेंच फ्राई / Maggi Masala French Fries","price":"₹80","desc":"French fries with maggi masala seasoning.","tags":["Vegetarian","Snack","Maggi"],"img":"img/maggi-masala-french-fries.jpeg"},
-{"id":57,"cat":"फ्रेंच फ्राई (French Fries)","name":"मसाला फ्रेंच फ्राई / Masala French Fries","price":"₹90","desc":"Spicy masala seasoned french fries.","tags":["Vegetarian","Snack","Spicy"],"img":"img/masala-french-fries.jpeg"},
-{"id":58,"cat":"फ्रेंच फ्राई (French Fries)","name":"चाट मसाला फ्रेंच फ्राई / Chaat Masala French Fries","price":"₹169","desc":"Tangy chaat masala flavored french fries.","tags":["Vegetarian","Snack","Chaat"],"img":"img/chaat-masala-french-fries.jpeg"},
-{"id":59,"cat":"फ्रेंच फ्राई (French Fries)","name":"चटकारा स्पेशल फ्रेंच फ्राई / Chatkara Special French Fries","price":"₹99","desc":"Special house recipe french fries.","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-french-fries.jpeg"},
+{"id":54,"cat":"French Fries","name":"Cheese French Fries","price":"₹99","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-french-fries.jpeg"},
+{"id":55,"cat":"French Fries","name":"Schezwan French Fries","price":"₹120","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-french-fries.jpeg"},
+{"id":56,"cat":"French Fries","name":"Maggi Masala French Fries","price":"₹80","tags":["Vegetarian","Snack","Maggi"],"img":"img/maggi-masala-french-fries.jpeg"},
+{"id":57,"cat":"French Fries","name":"Masala French Fries","price":"₹90","tags":["Vegetarian","Snack","Spicy"],"img":"img/masala-french-fries.jpeg"},
+{"id":58,"cat":"French Fries","name":"Chaat Masala French Fries","price":"₹169","tags":["Vegetarian","Snack","Chaat"],"img":"img/chaat-masala-french-fries.jpeg"},
+{"id":59,"cat":"French Fries","name":"Chatkara Special French Fries","price":"₹99","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-french-fries.jpeg"},
 
-{"id":60,"cat":"सैंडविच (Sandwich)","name":"चीज सेण्डविच / Cheese Sandwich","price":"₹59","desc":"Grilled cheese sandwich with fresh vegetables.","tags":["Vegetarian","Sandwich","Cheese"],"img":"img/cheese-sandwich.jpeg"},
-{"id":61,"cat":"सैंडविच (Sandwich)","name":"तंदुरी पनीर सेण्डविच / Tandoori Paneer Sandwich","price":"₹60","desc":"Tandoori marinated paneer sandwich.","tags":["Vegetarian","Sandwich","Paneer","Tandoori"],"img":"img/tandoori-paneer-sandwich.jpeg"},
-{"id":62,"cat":"सैंडविच (Sandwich)","name":"वेज सेण्ड‌विच / Veg Sandwich","price":"₹50","desc":"Classic vegetable sandwich.","tags":["Vegetarian","Sandwich","Basic"],"img":"img/veg-sandwich.jpeg"},
-{"id":63,"cat":"सैंडविच (Sandwich)","name":"क्रिम सेण्डविच / Cream Sandwich","price":"₹59","desc":"Creamy vegetable sandwich.","tags":["Vegetarian","Sandwich","Cream"],"img":"img/cream-sandwich.jpeg"},
-{"id":64,"cat":"सैंडविच (Sandwich)","name":"चटकारा स्पेशल सेण्डविच / Chatkara Special Sandwich","price":"₹110","desc":"Special house recipe sandwich.","tags":["Vegetarian","Sandwich","Special"],"img":"img/chatkara-special-sandwich.jpeg"},
+{"id":60,"cat":"Sandwich","name":"Cheese Sandwich","price":"₹59","tags":["Vegetarian","Sandwich","Cheese"],"img":"img/cheese-sandwich.jpeg"},
+{"id":61,"cat":"Sandwich","name":"Tandoori Paneer Sandwich","price":"₹60","tags":["Vegetarian","Sandwich","Paneer","Tandoori"],"img":"img/tandoori-paneer-sandwich.jpeg"},
+{"id":62,"cat":"Sandwich","name":"Veg Sandwich","price":"₹50","tags":["Vegetarian","Sandwich","Basic"],"img":"img/veg-sandwich.jpeg"},
+{"id":63,"cat":"Sandwich","name":"Cream Sandwich","price":"₹59","tags":["Vegetarian","Sandwich","Cream"],"img":"img/cream-sandwich.jpeg"},
+{"id":64,"cat":"Sandwich","name":"Chatkara Special Sandwich","price":"₹110","tags":["Vegetarian","Sandwich","Special"],"img":"img/chatkara-special-sandwich.jpeg"},
 
-{"id":65,"cat":"मोमोज (Momos)","name":"पनीर मोमोज / Paneer Momos","price":"₹100","desc":"Steamed paneer stuffed momos.","tags":["Vegetarian","Momos","Steamed"],"img":"img/paneer-momos.jpeg"},
-{"id":66,"cat":"मोमोज (Momos)","name":"क्रीम फ्राई मोमोज / Cream Fry Momos","price":"₹80","desc":"Creamy fried momos with special fillings.","tags":["Vegetarian","Momos","Fried"],"img":"img/cream-fry-momos.jpeg"},
-{"id":67,"cat":"मोमोज (Momos)","name":"फ्राई मोमोज / Fry Momos","price":"₹70","desc":"Crispy fried vegetable momos.","tags":["Vegetarian","Momos","Fried"],"img":"img/fry-momos.jpeg"},
-{"id":68,"cat":"मोमोज (Momos)","name":"चीज़ कार्न मोमोज / Cheese Corn Momos","price":"₹100","desc":"Cheese and corn stuffed momos.","tags":["Vegetarian","Momos","Cheese","Corn"],"img":"img/cheese-corn-momos.jpeg"},
+{"id":65,"cat":"Momos","name":"Paneer Momos","price":"₹100","tags":["Vegetarian","Momos","Steamed"],"img":"img/paneer-momos.jpeg"},
+{"id":66,"cat":"Momos","name":"Cream Fry Momos","price":"₹80","tags":["Vegetarian","Momos","Fried"],"img":"img/cream-fry-momos.jpeg"},
+{"id":67,"cat":"Momos","name":"Fry Momos","price":"₹70","tags":["Vegetarian","Momos","Fried"],"img":"img/fry-momos.jpeg"},
+{"id":68,"cat":"Momos","name":"Cheese Corn Momos","price":"₹100","tags":["Vegetarian","Momos","Cheese","Corn"],"img":"img/cheese-corn-momos.jpeg"},
 
-{"id":69,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"स्प्रिंग रोल / Spring Roll","price":"₹80","desc":"Crispy vegetable spring rolls.","tags":["Vegetarian","Chinese","Starter"],"img":"img/spring-roll.jpeg"},
-{"id":70,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"चाऊमीन / Chowmein","price":"₹60","desc":"Classic vegetable chowmein noodles.","tags":["Vegetarian","Chinese","Noodles"],"img":"img/chowmein.jpeg"},
-{"id":71,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"मंचूरियन / Manchurian","price":"₹60","desc":"Vegetable manchurian in spicy sauce.","tags":["Vegetarian","Chinese","Manchurian"],"img":"img/manchurian.jpeg"},
-{"id":72,"cat":"चाइनीज कॉर्नर (Chinese Corner)","name":"हनी चिल्ली पोटेटो / Honey Chilli Potato","price":"₹90","desc":"Crispy potato in honey chilli sauce.","tags":["Vegetarian","Chinese","Sweet","Spicy"],"img":"img/honey-chilli-potato.jpeg"},
+{"id":69,"cat":"Chinese Corner","name":"Spring Roll","price":"₹80","tags":["Vegetarian","Chinese","Starter"],"img":"img/spring-roll.jpeg"},
+{"id":70,"cat":"Chinese Corner","name":"Chowmein","price":"₹60","tags":["Vegetarian","Chinese","Noodles"],"img":"img/chowmein.jpeg"},
+{"id":71,"cat":"Chinese Corner","name":"Manchurian","price":"₹60","tags":["Vegetarian","Chinese","Manchurian"],"img":"img/manchurian.jpeg"},
+{"id":72,"cat":"Chinese Corner","name":"Honey Chilli Potato","price":"₹90","tags":["Vegetarian","Chinese","Sweet","Spicy"],"img":"img/honey-chilli-potato.jpeg"},
 
-{"id":73,"cat":"सूप (Soup)","name":"स्वीट कॉर्न सूप / Sweet Corn Soup","price":"₹50","desc":"Hot and sweet corn vegetable soup.","tags":["Vegetarian","Soup","Corn"],"img":"img/sweet-corn-soup.jpeg"},
-{"id":74,"cat":"सूप (Soup)","name":"मनचाऊ सूप / Manchow Soup","price":"₹60","desc":"Spicy Manchow soup with vegetables.","tags":["Vegetarian","Soup","Spicy"],"img":"img/manchow-soup.jpeg"},
-{"id":75,"cat":"सूप (Soup)","name":"टोमैटो सूप / Tomato Soup","price":"₹49","desc":"Classic hot tomato soup.","tags":["Vegetarian","Soup","Tomato"],"img":"img/tomato-soup.jpeg"},
-{"id":76,"cat":"सूप (Soup)","name":"हॉट & सौर सूप / Hot & Sour Soup","price":"₹60","desc":"Chinese style hot and sour soup.","tags":["Vegetarian","Soup","Chinese"],"img":"img/hot-sour-soup.jpeg"},
+{"id":73,"cat":"Soup","name":"Sweet Corn Soup","price":"₹50","tags":["Vegetarian","Soup","Corn"],"img":"img/sweet-corn-soup.jpeg"},
+{"id":74,"cat":"Soup","name":"Manchow Soup","price":"₹60","tags":["Vegetarian","Soup","Spicy"],"img":"img/manchow-soup.jpeg"},
+{"id":75,"cat":"Soup","name":"Tomato Soup","price":"₹49","tags":["Vegetarian","Soup","Tomato"],"img":"img/tomato-soup.jpeg"},
+{"id":76,"cat":"Soup","name":"Hot & Sour Soup","price":"₹60","tags":["Vegetarian","Soup","Chinese"],"img":"img/hot-sour-soup.jpeg"},
 
-{"id":77,"cat":"ब्रेड स्पेशल (Bread Special)","name":"ब्रेड बटर / Bread Butter","price":"₹59","desc":"Fresh bread with butter.","tags":["Vegetarian","Breakfast","Basic"],"img":"img/bread-butter.jpeg"},
-{"id":78,"cat":"ब्रेड स्पेशल (Bread Special)","name":"ब्रेड जेम / Bread Jam","price":"₹60","desc":"Bread with fruit jam.","tags":["Vegetarian","Breakfast","Sweet"],"img":"img/bread-jam.jpeg"},
-{"id":79,"cat":"ब्रेड स्पेशल (Bread Special)","name":"गार्लिक ब्रेड / Garlic Bread","price":"₹50","desc":"Toasted garlic flavored bread.","tags":["Vegetarian","Snack","Garlic"],"img":"img/garlic-bread.jpeg"},
-{"id":80,"cat":"ब्रेड स्पेशल (Bread Special)","name":"चीज़ गार्लिक ब्रेड / Cheese Garlic Bread","price":"₹59","desc":"Cheese topped garlic bread.","tags":["Vegetarian","Snack","Cheese","Garlic"],"img":"img/cheese-garlic-bread.jpeg"},
+{"id":77,"cat":"Bread Special","name":"Bread Butter","price":"₹59","tags":["Vegetarian","Breakfast","Basic"],"img":"img/bread-butter.jpeg"},
+{"id":78,"cat":"Bread Special","name":"Bread Jam","price":"₹60","tags":["Vegetarian","Breakfast","Sweet"],"img":"img/bread-jam.jpeg"},
+{"id":79,"cat":"Bread Special","name":"Garlic Bread","price":"₹50","tags":["Vegetarian","Snack","Garlic"],"img":"img/garlic-bread.jpeg"},
+{"id":80,"cat":"Bread Special","name":"Cheese Garlic Bread","price":"₹59","tags":["Vegetarian","Snack","Cheese","Garlic"],"img":"img/cheese-garlic-bread.jpeg"},
 
-{"id":81,"cat":"नाश्ता (Breakfast)","name":"पोहा / Poha","price":"₹90","desc":"Flattened rice with spices and peanuts.","tags":["Vegetarian","Breakfast","Maharashtrian"],"img":"img/poha.jpeg"},
-{"id":82,"cat":"नाश्ता (Breakfast)","name":"उपमा / Upma","price":"₹99","desc":"Semolina cooked with vegetables and spices.","tags":["Vegetarian","Breakfast","South Indian"],"img":"img/upma.jpeg"},
+{"id":81,"cat":"Breakfast","name":"Poha","price":"₹90","tags":["Vegetarian","Breakfast","Maharashtrian"],"img":"img/poha.jpeg"},
+{"id":82,"cat":"Breakfast","name":"Upma","price":"₹99","tags":["Vegetarian","Breakfast","South Indian"],"img":"img/upma.jpeg"},
 
-{"id":83,"cat":"पाव स्पेशल (Pav Special)","name":"चीज आलू टिक्की पाव / Cheese Aloo Tikki Pav","price":"₹80","desc":"Cheese and potato tikki stuffed pav.","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-aloo-tikki-pav.jpeg"},
-{"id":84,"cat":"पाव स्पेशल (Pav Special)","name":"आलू टिक्की पाव / Aloo Tikki Pav","price":"₹70","desc":"Potato tikki stuffed pav.","tags":["Vegetarian","Snack","Basic"],"img":"img/aloo-tikki-pav.jpeg"},
-{"id":85,"cat":"पाव स्पेशल (Pav Special)","name":"वेज क्रिम पाव / Veg Cream Pav","price":"₹69","desc":"Creamy vegetable stuffed pav.","tags":["Vegetarian","Snack","Cream"],"img":"img/veg-cream-pav.jpeg"},
-{"id":86,"cat":"पाव स्पेशल (Pav Special)","name":"वेज पाव / Veg Pav","price":"₹150","desc":"Vegetable stuffed pav.","tags":["Vegetarian","Snack","Vegetable"],"img":"img/veg-pav.jpeg"},
-{"id":87,"cat":"पाव स्पेशल (Pav Special)","name":"वेज चीज पाव / Veg Cheese Pav","price":"₹99","desc":"Vegetable and cheese stuffed pav.","tags":["Vegetarian","Snack","Cheese"],"img":"img/veg-cheese-pav.jpeg"},
-{"id":88,"cat":"पाव स्पेशल (Pav Special)","name":"शेज्वान स्पाईसी पाव / Schezwan Spicy Pav","price":"₹120","desc":"Spicy Schezwan flavored pav.","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-spicy-pav.jpeg"},
-{"id":89,"cat":"पाव स्पेशल (Pav Special)","name":"चटकारा स्पेशल पाव / Chatkara Special Pav","price":"₹80","desc":"Special house recipe stuffed pav.","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-pav.jpeg"},
+{"id":83,"cat":"Pav Special","name":"Cheese Aloo Tikki Pav","price":"₹80","tags":["Vegetarian","Snack","Cheese"],"img":"img/cheese-aloo-tikki-pav.jpeg"},
+{"id":84,"cat":"Pav Special","name":"Aloo Tikki Pav","price":"₹70","tags":["Vegetarian","Snack","Basic"],"img":"img/aloo-tikki-pav.jpeg"},
+{"id":85,"cat":"Pav Special","name":"Veg Cream Pav","price":"₹69","tags":["Vegetarian","Snack","Cream"],"img":"img/veg-cream-pav.jpeg"},
+{"id":86,"cat":"Pav Special","name":"Veg Pav","price":"₹150","tags":["Vegetarian","Snack","Vegetable"],"img":"img/veg-pav.jpeg"},
+{"id":87,"cat":"Pav Special","name":"Veg Cheese Pav","price":"₹99","tags":["Vegetarian","Snack","Cheese"],"img":"img/veg-cheese-pav.jpeg"},
+{"id":88,"cat":"Pav Special","name":"Schezwan Spicy Pav","price":"₹120","tags":["Vegetarian","Snack","Schezwan"],"img":"img/schezwan-spicy-pav.jpeg"},
+{"id":89,"cat":"Pav Special","name":"Chatkara Special Pav","price":"₹80","tags":["Vegetarian","Snack","Special"],"img":"img/chatkara-special-pav.jpeg"},
 
-{"id":90,"cat":"अन्य आइटम्स (Other Items)","name":"ब्रेड (छोटी व बड़ी) / Bread (Small & Big)","price":"₹70","desc":"Fresh bread in different sizes.","tags":["Vegetarian","Basic","Bakery"],"img":"img/bread.jpeg"},
-{"id":91,"cat":"अन्य आइटम्स (Other Items)","name":"अलग अलग फ्लेवर की केक / Different Flavor Cakes","price":"₹69","desc":"Assorted flavor cakes available.","tags":["Vegetarian","Dessert","Cake"],"img":"img/cakes.jpeg"},
-{"id":92,"cat":"अन्य आइटम्स (Other Items)","name":"अलग अलग फ्लेवर की आइसक्रीम / Different Flavor Ice Cream","price":"₹150","desc":"Various flavor ice creams.","tags":["Vegetarian","Dessert","Ice Cream"],"img":"img/ice-cream.jpeg"},
-];
+{"id":90,"cat":"Other Items","name":"Bread (Small & Big)","price":"₹70","tags":["Vegetarian","Basic","Bakery"],"img":"img/bread.jpeg"},
+{"id":91,"cat":"Other Items","name":"Different Flavor Cakes","price":"₹69","tags":["Vegetarian","Dessert","Cake"],"img":"img/cakes.jpeg"},
+{"id":92,"cat":"Other Items","name":"Different Flavor Ice Cream","price":"₹150","tags":["Vegetarian","Dessert","Ice Cream"],"img":"img/ice-cream.jpeg"},
+
+
+
+  ];
     // Cart functionality
     let cart = [];
     const cartButton = document.getElementById('cartButton');
@@ -1276,6 +1398,8 @@
     const clearCart = document.getElementById('clearCart');
     const whatsappOrder = document.getElementById('whatsappOrder');
     const tableNumberInput = document.getElementById('tableNumber');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    const scrollBottomBtn = document.getElementById('scrollBottomBtn');
 
     // Toggle cart modal
     cartButton.addEventListener('click', () => {
@@ -1473,6 +1597,22 @@
       renderMenuItems(filteredItems);
     }
 
+    // Scroll to top function
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Scroll to bottom function
+    function scrollToBottom() {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: 'smooth'
+      });
+    }
+
     // Initialize the menu
     document.addEventListener('DOMContentLoaded', () => {
       renderMenuItems(data);
@@ -1490,6 +1630,10 @@
       document.getElementById('search').addEventListener('input', (e) => {
         searchItems(e.target.value);
       });
+
+      // Navigation buttons
+      scrollTopBtn.addEventListener('click', scrollToTop);
+      scrollBottomBtn.addEventListener('click', scrollToBottom);
     });
 
     // Make functions available globally
@@ -1499,5 +1643,3 @@
   </script>
 </body>
 </html>
-
-
